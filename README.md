@@ -1,102 +1,34 @@
-# h1 Heading 
-## h2 Heading
-### h3 Heading
+# Fruit Samurai
+Welcome to Fruit Samurai! This is a web-based game project developed for our Software Engineering course at University of Luxembourg. In this project, we've created a game inspired by the popular Fruit Ninja, but with our own unique twist.
 
-**This is bold text**
+## Introduction
+Fruit Samurai is a fun and interactive game where players use a virtual samurai sword to slice various bamboos that are thrown onto the screen. The objective is simple: slice as many bamboos as possible while avoiding slicing any bombs that may also appear.
 
-*This is italic text* 
+## Features
+Slicing Mechanism: Players can slice bamboos by swiping their mouse cursor across the screen.
+Multiple bamboos: Different types of bamboos will appear, each with its own points value (Stand-By).
+Bomb Avoidance: Bombs will occasionally appear among the bamboos; slicing a bomb will result in a game over.
+Time Challenge: Players have a limited amount of time to slice as many bamboos as possible, before having to answer a question.
 
+## Technologies Used
+Frontend: HTML5, CSS3, JavaScript
+Backend: 
+Game Engine: (Phaser.js)
 
-## Blockquotes
+## How to Play
+To play the game locally, follow these steps:
 
-> Blockquotes can also be nested...
->> ...by using additional greater-than signs right next to each other...
-> > > ...or with spaces between arrows.
+Clone this repository to your local machine using git clone.
+Navigate to the project directory.
+Open index.html in your preferred web browser.
 
-
-## Lists
-
-Unordered
-
-+ Create a list by starting a line with `+`, `-`, or `*`
-+ Sub-lists are made by indenting 2 spaces:
-  - Marker character change forces new list start:
-    * Ac tristique libero volutpat at
-    + Facilisis in pretium nisl aliquet
-    - Nulla volutpat aliquam velit
-+ Very easy!
-
-Ordered
-
-1. Lorem ipsum dolor sit amet
-2. Consectetur adipiscing elit
-3. Integer molestie lorem at massa
-
-1. You can use sequential numbers...
-1. ...or keep all the numbers as `1.`
-
-Start numbering with offset:
-
-57. foo
-1. bar
+## Credits
+Ryan Cardoso Lopes
+Filomeno Antunes
+Alejandro Balboni
 
 
-## Code
+## Acknowledgements
+We'd like to thank Volker Müller for their guidance and support throughout this project.
 
-Inline `code`
-
-Indented code
-
-    // Some comments
-    line 1 of code
-    line 2 of code
-    line 3 of code
-
-
-Block code "fences"
-
-```
-Sample text here...
-```
-
-Syntax highlighting
-
-``` js
-var foo = function (bar) {
-  return bar++;
-};
-
-console.log(foo(5));
-```
-
-## Tables
-
-| Option | Description |
-| ------ | ----------- |
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-Right aligned columns
-
-| Option | Description |
-| ------:| -----------:|
-| data   | path to data files to supply the data that will be passed into templates. |
-| engine | engine to be used for processing templates. Handlebars is the default. |
-| ext    | extension to be used for dest files. |
-
-## Links
-
-[link text](http://dev.nodeca.com)
-
-[link with title](http://nodeca.github.io/pica/demo/ "title text!")
-
-Autoconverted link https://github.com/nodeca/pica (enable linkify to see)
-
-
-## Images
-
-![Minion](https://octodex.github.com/images/minion.png)
-![Stormtroopocat](https://octodex.github.com/images/stormtroopocat.jpg "The Stormtroopocat")
-
-Like links, Images also have a footnote style syntax.
+Enjoy playing Fruit Samurai!
