@@ -25,13 +25,26 @@ class PlayScene extends Phaser.Scene {
         // Affichage de la banane
         this.banana = this.add.image(configScreen.width/2, configScreen.height/2, "banana");
 
+        // Affichage de la bombe
+        this.bomb = this.add.image(configScreen.width/2, configScreen.height/2, "bomb");
         this.add.text(20, 20, "Playing game", {font: "25px KleeOne" , fill: "lime"});
     }
 
     update(){
+        this.updateBanana();
+        this.updateBomb();
+    }
+
+    updateBanana(){
         // Rotation de la banane
         this.banana.angle += 2.5;
-        this.moveBanana(this.banana, 5);
+        this.moveBanana(this.banana, 5); 
+    }
+
+    updateBomb(){
+        // Rotation de la banane
+        this.bomb.angle += 1;
+        this.moveBomb(this.bomb, 4); 
     }
 
     moveBanana(banana, speed) {
@@ -41,9 +54,22 @@ class PlayScene extends Phaser.Scene {
         }
     }
 
+    moveBomb(bomb, speed) {
+        bomb.y += speed;
+        if(bomb.y > configScreen.height){
+            this.resetBombPos(bomb);
+        }
+    }
+
     resetBananaPos(banana){
         banana.y = 0;
         var randomX = Phaser.Math.Between(0, configScreen.width);
         banana.x = randomX;
+    }
+
+    resetBombPos(bomb){
+        bomb.y = 0;
+        var randomX = Phaser.Math.Between(0, configScreen.width);
+        bomb.x = randomX;
     }
 }
