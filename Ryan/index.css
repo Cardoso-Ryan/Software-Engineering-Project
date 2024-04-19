@@ -1,35 +1,86 @@
+/* main.css */
+
+/* General reset for padding and margins */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/* Header styles */
+/*.page-header {
+  width: 100%;
+  padding: 10px 20px;  Adjust the padding as needed 
+  display: flex;
+  justify-content: flex-end;  Aligns the child elements to the right
+  align-items: center; /* Aligns the child elements vertically 
+  background: #ffffff; /* Adjust the background color as needed 
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: adds a subtle shadow for depth
+  position: relative; /* Enables absolute positioning inside the header 
+}*/
+
+
+/* Logo styles */
+.logo {
+  max-width: 100px; /* Adjust based on the size of your logo */
+  max-height: 50px; /* Adjust based on the size of your logo */
+  position: absolute; /* Position the logo absolutely */
+  top: 10px; /* Adjust the top position as needed */
+  right: 20px; /* Adjust the right position as needed */
+}
+
+/* Body styling */
 body {
-    height: 100%;
-    width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background-image: url('assets/images/illustration-of-dojo-room-vector.jpg');
-    background-size: cover;
-    font-family: sans-serif;
-    font-size: 2em;
-    text-align: center;
-  }
+  font-family: 'Arial', sans-serif; /* You can change the font family */
+  background: #f5f5f5; /* Light grey background */
+  color: #333; /* Dark grey text */
+  background-image: url('assets/images/illustration-of-dojo-room-vector.jpg'); /* Background image */
+  background-size: cover; /* Cover the entire screen */
+  line-height: 1.6;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  padding: 20px;
+}
 
-#newGame{
-    text-align: center;
-    vertical-align: middle;
-    border: 2px solid goldenrod;
-    border-radius: 7px;
-    background-color: gold;
-    color: orangeRed;
-    font-size: 32px;
-    font-weight: bold;
-    font-family: "Courier New";
-    width: 5em;
-    margin: 5px auto;
-   
-  }
+/* Container for the content */
+.main-container {
+  text-align: center; /* Center the content */
+  width: 100%; /* Full width */
+  max-width: 600px; /* Max width for larger screens */
+  margin: auto; /* Center the container */
+  background: white; /* White background for the content */
+  padding: 40px; /* Padding around the content */
+  border-radius: 8px; /* Rounded corners for the container */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1); /* Shadow for a 3D effect */
+}
 
-  #Head{
-    margin: auto;
-    color: orange;
-    font-size: 2em;
-    font-family: "Courier New";
-  }
+/* Styling the heading */
+.main-container h1 {
+  margin-bottom: 40px; /* Space below the heading */
+}
+
+/* Base button styles */
+.button {
+  background-color: #007bff; /* Bootstrap primary blue */
+  color: white; /* White text */
+  border: none; /* No border */
+  padding: 10px 20px; /* Padding inside the button */
+  font-size: 16px; /* Size of the text */
+  cursor: pointer; /* Cursor to indicate it's clickable */
+  text-decoration: none; /* No underline */
+  display: inline-block; /* Allows to set margins */
+  margin: 10px; /* Margin around buttons */
+  border-radius: 5px; /* Rounded corners for the button */
+  transition: background-color 0.3s ease; /* Transition for hover effect */
+}
+
+/* Button hover state */
+.button:hover {
+  background-color: #0056b3; /* A darker blue for hover state */
+}
+
+/* Button focus state */
+.button:focus {
+  outline: none; /* Remove the outline on focus */
+}

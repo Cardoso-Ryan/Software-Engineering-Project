@@ -1,0 +1,60 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body & Typography */
+body {
+    font-family: 'Arial', sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f4f4f4;
+}
+
+/* Container */
+.quiz-container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+}
+
+/* Quiz */
+#quiz {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+/* Questions */
+.question {
+    font-size: 1.2em;
+    margin-bottom: 10px;
+}
+
+/* Answers */
+.answers {
+    margin-bottom: 20px;
+}
+
+/* Results */
+#results {
+    background-color: #e2e2e2;
+    padding: 10px;
+    margin-top: 20px;
+}
+
+/* Buttons */
+button {
+    background-color: #5cb85c;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #4cae4c;
+}
