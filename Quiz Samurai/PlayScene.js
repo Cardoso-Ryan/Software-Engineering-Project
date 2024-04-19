@@ -28,6 +28,22 @@ class PlayScene extends Phaser.Scene {
         // Affichage de la bombe
         this.bomb = this.add.image(configScreen.width/2, configScreen.height/2, "bomb");
         this.add.text(20, 20, "Playing game", {font: "25px KleeOne" , fill: "lime"});
+    
+        // Creation de l'animation de fumé en cliquant sur la bombe
+        this.anims.create({
+            key: "smoke",
+            frames: this.anims.generateFrameNumbers("smoke"),
+            frameRate: 20,
+            repeat: 0,
+            hideOnComplete: true
+        });
+
+        //Interactivité de la banane et de la bombe
+        this.banana.setInteractive();
+        this.bomb.setInteractive();
+
+        this.banana.on('gameobjectdown', this.destroyBanana, this);
+        this.bomb.on('gameobjectdown', this.destroyBomb, this);
     }
 
     update(){
@@ -71,5 +87,23 @@ class PlayScene extends Phaser.Scene {
         bomb.y = 0;
         var randomX = Phaser.Math.Between(0, configScreen.width);
         bomb.x = randomX;
+    }
+
+    destroyBanana(pointer, gameObject){
+        gameObject.setTexture("banana-1");
+        gameObject.disableInteractive();
+        this.playSmokeAnimation(gameObject);
+    }
+
+    destroyBomb(pointer, gameObject){
+        gameObject.disableInteractive();
+        this.playSmokeAnimation(gameObject);
+    }
+
+    playSmokeAnimation(gameObject) {
+        gameObject.play("smoke"); // Play smoke animation
+        gameObject.on('animationcomplete', function () {
+            gameObject.destroy(); // Destroy object after animation completes
+        }, this);
     }
 }
