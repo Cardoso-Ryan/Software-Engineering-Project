@@ -7,14 +7,46 @@
   box-sizing: border-box;
 }
 
+/*Header CSS*/
+.site-header {
+  background-color: #343a40; /* Dark background for the header */
+  color: white;
+  padding: 10px 0;
+}
 
-/* Logo styles */
+.header-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 .logo {
-  max-width: 100px; /* Adjust based on the size of your logo */
-  max-height: 50px; /* Adjust based on the size of your logo */
-  position: absolute; /* Position the logo absolutely */
-  top: 10px; /* Adjust the top position as needed */
-  right: 20px; /* Adjust the right position as needed */
+  height: 50px; /* Set the height of your logo */
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin: 0 10px;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+.main-nav a:hover {
+  background-color: #495057; /* Slight change for hover effect */
 }
 
 /* Body styling */
