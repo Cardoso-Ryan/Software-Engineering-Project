@@ -23,8 +23,8 @@ html, body {
 /*Header CSS*/
 .site-header {
   width: 100%;
-  background-color: #343a40; /* Or any other color you prefer */
-  padding: 20px 0; /* Increased padding for a taller header */
+  background-color: rgba(0, 0, 0, 0.75); /* Or any other color you prefer */
+  padding: 10px 0; /* Increased padding for a taller header */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -42,7 +42,7 @@ html, body {
 .logo {
   display: block; /* Fixes inline spacing issue */
   height: auto; /* Maintain aspect ratio */
-  max-height: 100px; /* Increase this value to increase the logo size */
+  max-height: 60px; /* Increase this value to increase the logo size */
 }
 
 .main-nav ul {
@@ -61,11 +61,13 @@ html, body {
   text-decoration: none;
   color: white; /* For light text */
   font-family: 'Kanit', sans-serif;
+  padding: 10px 15px; /* Add padding to create a larger clickable area */
+  transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .main-nav a:hover {
-  background-color: #495057;
-  /* Slight change for hover effect */
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle white background on hover */
+  border-radius: 5px; /* Optional: adds rounded corners to the background */
 }
 
 body {
