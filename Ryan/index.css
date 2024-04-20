@@ -23,7 +23,7 @@ html, body {
 /*Header CSS*/
 .site-header {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.75); /* Or any other color you prefer */
+  background-color: rgba(52, 58, 64, 0.95); /* Or any other color you prefer */
   padding: 10px 0; /* Increased padding for a taller header */
   display: flex;
   justify-content: space-between;
@@ -79,7 +79,7 @@ body {
 }
 /* Container for the content */
 .main-container {
-  background-color: #D32F2F;
+  background-color: rgba(0, 0, 0, 0.75);
   /* Red background for the box */
   padding: 20px;
   /* Padding inside the box */
@@ -95,12 +95,14 @@ body {
   /* Themed font style */
   margin: 50px auto;
   /* Center the box in the page */
-  width: 80%;
+  width: 35%;
   /* Width of the box */
   max-width: 800px;
   /* Maximum width */
   transition: all 0.3s ease;
   /* Smooth transition for hover effects */
+  height: 35%;
+  position: center;
 }
 
 .main-container:hover {
@@ -197,4 +199,54 @@ body {
   /* Slight raise effect on hover */
   box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
   /* Deeper shadow on hover for a "lifting" effect */
+}
+
+.site-footer {
+  background-color: rgba(52, 58, 64, 0.95); /* Dark background for the footer */
+  color: white; /* White text color */
+  text-align: center; /* Center the text inside the footer */
+  padding: 20px 0; /* Padding above and below the footer content */
+  font-size: 0.8rem; /* Smaller font size for the footer */
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px; /* Maximum width of the footer content */
+  margin: 0 auto; /* Center the footer content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Space out the copyright and nav */
+  align-items: center; /* Align items vertically */
+  flex-wrap: wrap; /* Wrap items to a new line on small screens */
+}
+
+.footer-nav ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Display nav items in a row */
+}
+
+.footer-nav li {
+  margin: 0 10px; /* Space out the nav items */
+}
+
+.footer-nav a {
+  color: white; /* White text for links */
+  text-decoration: none; /* No underline on links */
+  transition: color 0.3s ease; /* Transition for hover effect */
+}
+
+.footer-nav a:hover {
+  color: #aaa; /* Lighter color on hover for links */
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+      flex-direction: column; /* Stack items vertically on small screens */
+  }
+  .footer-nav {
+      margin-top: 10px; /* Add space above nav on small screens */
+  }
 }
