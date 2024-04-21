@@ -150,11 +150,43 @@ button#submit:hover {
     background-color: #34495e;
 }
 
+#retryButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px; /* Space above the button */
+}
+
+#retryButton:hover {
+    background-color: #34495e;
+}
+
 /* Results styling */
 #results {
     font-size: 1.2em;
     color: #16a085;
     margin-top: 20px;
+}
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #34495e; /* A green color to indicate success */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Remove underline from the link */
+    margin-top: 20px; /* Space above the button */
+}
+
+.home-button:hover {
+    background-color: #34495e;
 }
 
 .site-footer {

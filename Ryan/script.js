@@ -118,17 +118,38 @@ function showNextQuestion() {
 function showResults() {
     let resultsHTML = `<div>You got ${numCorrect} out of ${myQuestions.length} questions right.</div>`;
     
-    // If there are incorrect answers, list them
+    // If there are incorrect answers, list them and provide a retry button
     if (incorrectAnswers.length > 0) {
-        resultsHTML += `<div>\nYou answered the following questions incorrectly:</div><ul>`;
+        resultsHTML += `<div>You answered the following questions incorrectly:</div><ul>`;
         incorrectAnswers.forEach(index => {
             resultsHTML += `<li>${myQuestions[index].question}</li>`;
         });
         resultsHTML += `</ul>`;
+        resultsHTML += `<button id="retryButton">Retry</button>`;
+    } else {
+        // If all answers are correct, provide a link back to the home page
+        resultsHTML += `<a href="quiz.html" class="home-button">Go to Home Page</a>`;
     }
 
     resultsContainer.innerHTML = resultsHTML;
-    submitButton.style.display = 'none'; // Hide the submit button after displaying results
+
+    // Add an event listener to the retry button
+    const retryButton = document.getElementById('retryButton');
+    if (retryButton) {
+        retryButton.addEventListener('click', function() {
+            // Reset the quiz
+            currentQuestionIndex = 0;
+            numCorrect = 0;
+            incorrectAnswers = [];
+            // Hide the results and show the first question again
+            resultsContainer.innerHTML = '';
+            showQuestion(currentQuestionIndex);
+            submitButton.style.display = 'inline-block';
+        });
+    }
+
+    // Hide the submit button after displaying results
+    submitButton.style.display = 'none';
 }
 
 // Initial setup for category buttons
