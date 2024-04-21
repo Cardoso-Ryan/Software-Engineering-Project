@@ -1,24 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="game-styles.css">
     <title>Quiz Samurai</title>
 </head>
-<body>
-    <script type="text/javascript" src="phaser.min.js"></script>
-    <script type="text/javascript" src="HomeScene.js"></script>
-    <script type="text/javascript" src="PlayScene.js"></script>
-    <script type="text/javascript" src="game.js"></script>
-    <div id="main">
-        <canvas id="Samurai" width="400" height="240">
-        </div>
 
-    <script>
-            var runGame = function(){
-                    document.getElementById("newGame").style.display = "none";
-                    document.getElementById("Head").style.display = "none";
-      };
-    </script>
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <img src="assets/images/logo.png" alt="Quiz Samurai Logo" class="logo">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Game</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="main-container">
+        <script type="text/javascript" src="phaser.min.js"></script>
+        <script type="text/javascript" src="HomeScene.js"></script>
+        <script type="text/javascript" src="PlayScene.js"></script>
+        <script type="text/javascript" src="game.js"></script>
+
+        <script>
+            var runGame = function () {
+                document.getElementById("Head").style.display = "none";
+            };
+        </script>
+    </div>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Quiz Samurai. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="donation.html">Donation</a></li>
+                    <li><a href="about.html">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+
 </body>
+
 </html>
