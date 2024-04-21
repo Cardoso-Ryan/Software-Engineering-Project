@@ -1,66 +1,77 @@
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
+const categoryMenu = document.querySelector('.category-menu');
+const quizContainerElement = document.querySelector('.quiz-container');
 const submitButton = document.getElementById('submit');
 let currentQuestionIndex = 0;
 let numCorrect = 0;
+let incorrectAnswers = [];
+let myQuestions = [];
 
-const myQuestions = [
-    {
-        question: "What does HTML stand for?",
-        answers: {
-            a: "Hyper Trainer Marking Language",
-            b: "Hyper Text Markup Language",
-            c: "Hyper Texts Mark Language"
+const categories = {
+    webdev: [
+        // Example question
+        {
+            question: "What does HTML stand for?",
+            answers: {
+                a: "HyperText Markup Language",
+                b: "HighTech Machine Language",
+                c: "HyperText Machine Language"
+            },
+            correctAnswer: "a"
         },
-        correctAnswer: "b"
-    },
-    {
-        question: "Which language is used for styling web pages?",
-        answers: {
-            a: "HTML",
-            b: "JQuery",
-            c: "CSS"
+        
+    ],
+    prog: [
+        
+        {
+            question: "Which language runs in a web browser?",
+            answers: {
+                a: "Java",
+                b: "C",
+                c: "JavaScript"
+            },
+            correctAnswer: "c"
         },
-        correctAnswer: "c"
-    },
-    {
-        question: "Which is not a JavaScript Framework?",
-        answers: {
-            a: "Python",
-            b: "JQuery",
-            c: "Django"
+        
+    ],
+    math: [
+        
+        {
+            question: "What is the square root of 144?",
+            answers: {
+                a: "12",
+                b: "14",
+                c: "16"
+            },
+            correctAnswer: "a"
         },
-        correctAnswer: "c"
-    },
-    {
-        question: "What does CSS stand for?",
-        answers: {
-            a: "Computer Style Sheets",
-            b: "Creative Style System",
-            c: "Cascading Style Sheets"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "What is the purpose of the alt attribute in images?",
-        answers: {
-            a: "To create a link",
-            b: "To define a source",
-            c: "To provide an alternate text"
-        },
-        correctAnswer: "c"
-    },
-    {
-        question: "Which HTML element is used for specifying a footer for a document or section?",
-        answers: {
-            a: "bottom",
-            b: "footer",
-            c: "section"
-        },
-        correctAnswer: "b"
-    },
-    
-];
+
+    ]
+};
+
+// Function to load a category of questions
+function loadCategory(category) {
+    if (categories.hasOwnProperty(category)) {
+        myQuestions = categories[category];
+        buildQuiz();
+        categoryMenu.style.display = 'none';
+        quizContainerElement.style.display = 'block';
+    }/* else {
+        alert('Category not found!');
+    }*/ // This is commented out because the category buttons should only be visible if the category exists but not sure so I commented it out
+}
+
+// Function to build the quiz
+function buildQuiz() {
+    // Reset for new category
+    currentQuestionIndex = 0;
+    numCorrect = 0;
+    incorrectAnswers = [];
+    submitButton.style.display = 'inline-block';
+    resultsContainer.innerHTML = '';
+    showQuestion(currentQuestionIndex);
+}
 
 function showQuestion(index) {
     const question = myQuestions[index];
@@ -86,26 +97,42 @@ function showNextQuestion() {
     const answerContainers = quizContainer.querySelector('.answers');
     const selector = `input[name=question]:checked`;
     const userAnswer = (answerContainers.querySelector(selector) || {}).value;
+    const correctAnswer = myQuestions[currentQuestionIndex].correctAnswer;
 
-    if (userAnswer === myQuestions[currentQuestionIndex].correctAnswer) {
+    if (userAnswer === correctAnswer) {
         numCorrect++;
-        currentQuestionIndex++;
-        if (currentQuestionIndex >= myQuestions.length) {
-            showResults();
-        } else {
-            showQuestion(currentQuestionIndex);
-        }
     } else {
-        alert('Wrong answer. Try again!');
+        // If the answer is wrong, add the question to the incorrectAnswers array
+        incorrectAnswers.push(currentQuestionIndex);
+    }
+
+    // Proceed to the next question regardless of whether the previous one was correct
+    currentQuestionIndex++;
+    if (currentQuestionIndex >= myQuestions.length) {
+        showResults();
+    } else {
+        showQuestion(currentQuestionIndex);
     }
 }
 
 function showResults() {
-    resultsContainer.innerHTML = `<div>You got ${numCorrect} out of ${myQuestions.length} questions right.</div>`;
-    submitButton.style.display = 'none';
+    let resultsHTML = `<div>You got ${numCorrect} out of ${myQuestions.length} questions right.</div>`;
+    
+    // If there are incorrect answers, list them
+    if (incorrectAnswers.length > 0) {
+        resultsHTML += `<div>\nYou answered the following questions incorrectly:</div><ul>`;
+        incorrectAnswers.forEach(index => {
+            resultsHTML += `<li>${myQuestions[index].question}</li>`;
+        });
+        resultsHTML += `</ul>`;
+    }
+
+    resultsContainer.innerHTML = resultsHTML;
+    submitButton.style.display = 'none'; // Hide the submit button after displaying results
 }
 
+// Initial setup for category buttons
+document.querySelectorAll('.category-menu button').forEach(button => {
+    button.addEventListener('click', () => loadCategory(button.getAttribute('data-category')));
+});
 submitButton.addEventListener('click', showNextQuestion);
-
-// Initialize with the first question
-showQuestion(0);

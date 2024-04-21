@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
+    <title>Quiz Categories</title>
     <link rel="stylesheet" href="quiz-styles.css">
     <link href="https://fonts.googleapis.com/css?family=Kanit:400,700&display=swap" rel="stylesheet">
 </head>
@@ -22,7 +22,14 @@
         </div>
     </header>
 
-    <div class="quiz-container">
+    <div class="category-menu">
+        <h2>Select a category:</h2>
+        <button onclick="loadCategory('webdev')">Web Development</button>
+        <button onclick="loadCategory('prog')">Programming</button>
+        <button onclick="loadCategory('math')">Mathematics</button>
+    </div>
+
+    <div class="quiz-container" style="display: none;">
         <div id="quiz"></div>
         <button id="submit">Submit Quiz</button>
         <div id="results"></div>

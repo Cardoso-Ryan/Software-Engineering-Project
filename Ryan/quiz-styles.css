@@ -65,10 +65,50 @@ body, html {
     padding-top: 70px;
 }
 
+.category-menu {
+    padding: 30px;
+    background: rgba(52, 58, 64, 0.95); /* Slightly more opaque for better readability */
+    border-radius: 15px; /* Larger border radius for a softer look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+    width: 80%; /* Slightly narrower for a centered look */
+    max-width: 400px; /* Smaller max-width for better button alignment */
+    margin: 50px auto; /* More vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center the text for aesthetics */
+    position: absolute;
+    top:15%;
+}
+
+.category-menu h2 {
+    margin-bottom: 20px; /* Add space below the heading */
+    color: #ffffff; /* Dark color for the text */
+    font-size: 24px; /* Larger font size for the heading */
+}
+
+.category-menu button {
+    background-color: #2c3e50; /* Dark blue background color */
+    color: white; /* White text color */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    padding: 10px 20px; /* Top/bottom, left/right padding */
+    margin: 10px 0; /* Space between buttons */
+    width: 100%; /* Full width buttons */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    font-size: 18px; /* Larger font size for better readability */
+    cursor: pointer; /* Cursor to pointer to indicate clickability */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.category-menu button:hover {
+    background-color: #2c3e50; /* Darken button on hover for interaction feedback */
+}
+
 /* Container for the quiz */
 .quiz-container {
     padding: 20px;
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(52, 58, 64, 0.95);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     width: 100%;
@@ -83,11 +123,15 @@ body, html {
 /* Styling for the quiz questions and answers */
 .question {
     font-size: 1.2em;
+    font: 'Kanit', sans-serif;
+    color: white;
     margin-bottom: 10px;
 }
 
 .answer {
     padding: 5px 0; /* Adds space above and below each answer */
+    font: 'Kanit', sans-serif;
+    color: white;
 }
 
 /* Button styling */
@@ -158,6 +202,14 @@ button#submit:hover {
 @media (max-width: 768px) {
     .quiz-container {
         width: 95%;
+    }
+    .category-menu {
+        width: 95%;
+        padding: 20px;
+    }
+    .category-menu button {
+        font-size: 16px;
+        padding: 8px 16px;
     }
     .footer-content {
         flex-direction: column; /* Stack items vertically on small screens */
