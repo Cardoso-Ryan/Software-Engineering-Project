@@ -8,6 +8,10 @@ class PlayScene extends Phaser.Scene {
         this.background.setOrigin(0,0);
         this.background.setScale(1.6);
 
+        // Customizable cursor
+        this.input.setDefaultCursor('url(assets/images/katanaMin.png), pointer');
+       // this.input.setDefaultCursor('url(assets/images/sword.png), pointer');
+
         // Affichage de la vie du joueur
         this.x = this.add.image(880, 35, "x");
         this.x.setScale(1.2);
@@ -22,7 +26,7 @@ class PlayScene extends Phaser.Scene {
         //this.x = this.add.image(970, 25, "xxxf");
         //this.x.setScale(1.6);
 
-        // Affichage de la banane
+        // Affichage du bamboo
         this.bamboo = this.add.image(configScreen.width/2, configScreen.height/2, "bamboo");
 
         // Affichage de la bombe
@@ -44,6 +48,13 @@ class PlayScene extends Phaser.Scene {
 
         this.bamboo.on('gameobjectdown', this.destroyBamboo, this);
         this.bomb.on('gameobjectdown', this.destroyBomb, this);
+
+        this.input.on('gameobjectover', (pointer, bamboo) => 
+        {
+            bamboo.setTexture("bamboo1");
+
+        });
+
     }
 
     update(){
@@ -67,6 +78,7 @@ class PlayScene extends Phaser.Scene {
         bamboo.y += speed;
         if(bamboo.y > configScreen.height){
             this.resetBambooPos(bamboo);
+            bamboo.setTexture("bamboo"); //reset a bamboo quand sort de la configScreen
         }
     }
 
