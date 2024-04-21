@@ -1,72 +1,111 @@
 const quizContainer = document.getElementById('quiz');
 const resultsContainer = document.getElementById('results');
 const submitButton = document.getElementById('submit');
+let currentQuestionIndex = 0;
+let numCorrect = 0;
 
 const myQuestions = [
     {
-        question: "Who is known as the father of computer science?",
+        question: "What does HTML stand for?",
         answers: {
-            a: "Albert Einstein",
-            b: "Charles Babbage",
-            c: "Alan Turing"
+            a: "Hyper Trainer Marking Language",
+            b: "Hyper Text Markup Language",
+            c: "Hyper Texts Mark Language"
+        },
+        correctAnswer: "b"
+    },
+    {
+        question: "Which language is used for styling web pages?",
+        answers: {
+            a: "HTML",
+            b: "JQuery",
+            c: "CSS"
         },
         correctAnswer: "c"
     },
     {
-        question: "What is 2+2?",
+        question: "Which is not a JavaScript Framework?",
         answers: {
-            a: "3",
-            b: "4",
-            c: "5"
+            a: "Python",
+            b: "JQuery",
+            c: "Django"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "What does CSS stand for?",
+        answers: {
+            a: "Computer Style Sheets",
+            b: "Creative Style System",
+            c: "Cascading Style Sheets"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "What is the purpose of the alt attribute in images?",
+        answers: {
+            a: "To create a link",
+            b: "To define a source",
+            c: "To provide an alternate text"
+        },
+        correctAnswer: "c"
+    },
+    {
+        question: "Which HTML element is used for specifying a footer for a document or section?",
+        answers: {
+            a: "bottom",
+            b: "footer",
+            c: "section"
         },
         correctAnswer: "b"
-    }
+    },
+    
 ];
 
-function buildQuiz(){
-    const output = [];
-
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-        const answers = [];
-        for(letter in currentQuestion.answers){
-            answers.push(
-                `<label>
-                    <input type="radio" name="question${questionNumber}" value="${letter}">
+function showQuestion(index) {
+    const question = myQuestions[index];
+    const answers = [];
+    for (const letter in question.answers) {
+        answers.push(
+            `<div class="answer">
+                <label>
+                    <input type="radio" name="question" value="${letter}">
                     ${letter} :
-                    ${currentQuestion.answers[letter]}
-                </label>`
-            );
-        }
-
-        output.push(
-            `<div class="question"> ${currentQuestion.question} </div>
-            <div class="answers"> ${answers.join('')} </div>`
+                    ${question.answers[letter]}
+                </label>
+            </div>`
         );
-    });
-
-    quizContainer.innerHTML = output.join('');
+    }
+    quizContainer.innerHTML = `
+        <div class="question"> ${question.question} </div>
+        <div class="answers"> ${answers.join('')} </div>
+    `;
 }
 
-function showResults(){
-    const answerContainers = quizContainer.querySelectorAll('.answers');
-    let numCorrect = 0;
+function showNextQuestion() {
+    const answerContainers = quizContainer.querySelector('.answers');
+    const selector = `input[name=question]:checked`;
+    const userAnswer = (answerContainers.querySelector(selector) || {}).value;
 
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-        const answerContainer = answerContainers[questionNumber];
-        const selector = `input[name=question${questionNumber}]:checked`;
-        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
-
-        if(userAnswer === currentQuestion.correctAnswer){
-            numCorrect++;
-            answerContainers[questionNumber].style.color = 'lightgreen';
+    if (userAnswer === myQuestions[currentQuestionIndex].correctAnswer) {
+        numCorrect++;
+        currentQuestionIndex++;
+        if (currentQuestionIndex >= myQuestions.length) {
+            showResults();
         } else {
-            answerContainers[questionNumber].style.color = 'red';
+            showQuestion(currentQuestionIndex);
         }
-    });
-
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    } else {
+        alert('Wrong answer. Try again!');
+    }
 }
 
-submitButton.addEventListener('click', showResults);
+function showResults() {
+    resultsContainer.innerHTML = `<div>You got ${numCorrect} out of ${myQuestions.length} questions right.</div>`;
+    submitButton.style.display = 'none';
+}
 
-buildQuiz();
+submitButton.addEventListener('click', showNextQuestion);
+
+// Initialize with the first question
+showQuestion(0);
