@@ -23,7 +23,7 @@ class PlayScene extends Phaser.Scene {
         //this.x.setScale(1.6);
 
         // Affichage de la banane
-        this.banana = this.add.image(configScreen.width/2, configScreen.height/2, "banana");
+        this.bamboo = this.add.image(configScreen.width/2, configScreen.height/2, "bamboo");
 
         // Affichage de la bombe
         this.bomb = this.add.image(configScreen.width/2, configScreen.height/2, "bomb");
@@ -39,22 +39,22 @@ class PlayScene extends Phaser.Scene {
         });
 
         //Interactivité de la banane et de la bombe
-        this.banana.setInteractive();
+        this.bamboo.setInteractive();
         this.bomb.setInteractive();
 
-        this.banana.on('gameobjectdown', this.destroyBanana, this);
+        this.bamboo.on('gameobjectdown', this.destroyBamboo, this);
         this.bomb.on('gameobjectdown', this.destroyBomb, this);
     }
 
     update(){
-        this.updateBanana();
+        this.updateBamboo();
         this.updateBomb();
     }
 
-    updateBanana(){
+    updateBamboo(){
         // Rotation de la banane
-        this.banana.angle += 2.5;
-        this.moveBanana(this.banana, 5); 
+        this.bamboo.angle += 2.5;
+        this.moveBamboo(this.bamboo, 5); 
     }
 
     updateBomb(){
@@ -63,10 +63,10 @@ class PlayScene extends Phaser.Scene {
         this.moveBomb(this.bomb, 4); 
     }
 
-    moveBanana(banana, speed) {
-        banana.y += speed;
-        if(banana.y > configScreen.height){
-            this.resetBananaPos(banana);
+    moveBamboo(bamboo, speed) {
+        bamboo.y += speed;
+        if(bamboo.y > configScreen.height){
+            this.resetBambooPos(bamboo);
         }
     }
 
@@ -77,10 +77,10 @@ class PlayScene extends Phaser.Scene {
         }
     }
 
-    resetBananaPos(banana){
-        banana.y = 0;
+    resetBambooPos(bamboo){
+        bamboo.y = 0;
         var randomX = Phaser.Math.Between(0, configScreen.width);
-        banana.x = randomX;
+        bamboo.x = randomX;
     }
 
     resetBombPos(bomb){
@@ -89,7 +89,7 @@ class PlayScene extends Phaser.Scene {
         bomb.x = randomX;
     }
 
-    destroyBanana(pointer, gameObject){
+    destroyBamboo(pointer, gameObject){
         gameObject.setTexture("banana-1");
         gameObject.disableInteractive();
         this.playSmokeAnimation(gameObject);
