@@ -71,7 +71,7 @@ html, body {
 }
 
 body {
-  background-image: url('assets/images/illustration-of-dojo-room-vector.jpg');
+  background-image: url('assets/images/Japanese\ temple.png');
   background-size: cover; /* Cover the entire space of the page */
   background-repeat: no-repeat; /* Don't repeat the image */
   background-attachment: fixed; /* Fix the position of the background image */
