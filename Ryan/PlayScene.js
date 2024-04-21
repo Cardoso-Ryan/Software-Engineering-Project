@@ -23,10 +23,7 @@ class PlayScene extends Phaser.Scene {
         //this.x.setScale(1.6);
 
         // Affichage de la banane
-        this.banana = this.add.image(configScreen.width/2, configScreen.height/2, "banana");
-
-        // Affichage de la bombe
-        this.bomb = this.add.image(configScreen.width/2, configScreen.height/2, "bomb");
+        this.bamboo = this.add.image(this.scale.width / 2, 100, "bamboo").setInteractive();
         this.add.text(20, 20, "Playing game", {font: "25px KleeOne" , fill: "lime"});
     
         // Creation de l'animation de fumé en cliquant sur la bombe
@@ -39,65 +36,38 @@ class PlayScene extends Phaser.Scene {
         });
 
         //Interactivité de la banane et de la bombe
-        this.banana.setInteractive();
-        this.bomb.setInteractive();
+        this.bamboo.setInteractive();
 
-        this.banana.on('gameobjectdown', this.destroyBanana, this);
-        this.bomb.on('gameobjectdown', this.destroyBomb, this);
+        this.bamboo.on('pointerdown', () => this.destroyFruit(this.bamboo));
     }
 
     update(){
-        this.updateBanana();
-        this.updateBomb();
+        this.updatebamboo();
     }
 
-    updateBanana(){
+    updatebamboo(){
         // Rotation de la banane
-        this.banana.angle += 2.5;
-        this.moveBanana(this.banana, 5); 
+        this.bamboo.angle += 2.5;
+        this.movebamboo(this.bamboo, 5); 
     }
 
-    updateBomb(){
-        // Rotation de la banane
-        this.bomb.angle += 1;
-        this.moveBomb(this.bomb, 4); 
-    }
-
-    moveBanana(banana, speed) {
-        banana.y += speed;
-        if(banana.y > configScreen.height){
-            this.resetBananaPos(banana);
+    movebamboo(bamboo, speed) {
+        bamboo.y += speed;
+        if(bamboo.y > configScreen.height){
+            this.resetbambooPos(bamboo);
         }
     }
 
-    moveBomb(bomb, speed) {
-        bomb.y += speed;
-        if(bomb.y > configScreen.height){
-            this.resetBombPos(bomb);
-        }
-    }
-
-    resetBananaPos(banana){
-        banana.y = 0;
+    resetbambooPos(bamboo){
+        bamboo.y = 0;
         var randomX = Phaser.Math.Between(0, configScreen.width);
-        banana.x = randomX;
+        bamboo.x = randomX;
     }
 
-    resetBombPos(bomb){
-        bomb.y = 0;
-        var randomX = Phaser.Math.Between(0, configScreen.width);
-        bomb.x = randomX;
-    }
-
-    destroyBanana(pointer, gameObject){
-        gameObject.setTexture("banana-1");
-        gameObject.disableInteractive();
-        this.playSmokeAnimation(gameObject);
-    }
-
-    destroyBomb(pointer, gameObject){
-        gameObject.disableInteractive();
-        this.playSmokeAnimation(gameObject);
+    destroyFruit(fruit) {
+        fruit.setTexture("bambooCut");
+        fruit.disableInteractive();
+        this.playSmokeAnimation(fruit);
     }
 
     playSmokeAnimation(gameObject) {

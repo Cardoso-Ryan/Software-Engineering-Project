@@ -15,15 +15,13 @@ class HomeScene extends Phaser.Scene {
         this.load.image("xxxf", "assets/images/xxxf.png");
 
         //Chargement de la banane (a changer pour du bamboo)
-        this.load.image("banana", "assets/images/banana.png");
+        this.load.image("bamboo", "assets/images/bamboo.png");
+        this.load.image("bambooCut", "assets/images/bambooCut.png")
         
         this.load.spritesheet("smoke", "assets/smoke/smokes.png",{
             frameWidth: 64,
             frameHeight: 64
         } )
-
-           //Chargement de la bombe
-        this.load.image("bomb", "assets/images/bomb.png");
     }
 
     create(){
