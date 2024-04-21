@@ -7,134 +7,246 @@
   box-sizing: border-box;
 }
 
-/*Header CSS*/
-.site-header {
-  background-color: #343a40; /* Dark background for the header */
-  color: white;
-  padding: 10px 0;
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scroll */
 }
 
-.header-inner {
+/* Apply a box-sizing to all elements */
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/*Header CSS*/
+.site-header {
+  width: 100%;
+  background-color: rgba(52, 58, 64, 0.95); /* Or any other color you prefer */
+  padding: 10px 0; /* Increased padding for a taller header */
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.header-inner {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .logo {
-  height: 50px; /* Set the height of your logo */
+  display: block; /* Fixes inline spacing issue */
+  height: auto; /* Maintain aspect ratio */
+  max-height: 60px; /* Increase this value to increase the logo size */
 }
 
 .main-nav ul {
   list-style: none;
   display: flex;
-  margin: 0;
+  align-items: center;
   padding: 0;
+  margin: 0;
 }
 
 .main-nav li {
-  margin: 0 10px;
+  padding: 0 15px; /* Spacing between nav items */
 }
 
 .main-nav a {
-  color: white;
   text-decoration: none;
-  padding: 5px 10px;
-  transition: background-color 0.3s ease;
+  color: white; /* For light text */
+  font-family: 'Kanit', sans-serif;
+  padding: 10px 15px; /* Add padding to create a larger clickable area */
+  transition: background-color 0.3s; /* Smooth transition for background color */
 }
 
 .main-nav a:hover {
-  background-color: #495057; /* Slight change for hover effect */
+  background-color: rgba(255, 255, 255, 0.2); /* Subtle white background on hover */
+  border-radius: 5px; /* Optional: adds rounded corners to the background */
 }
 
-/* Body styling */
 body {
-  font-family: 'Arial', sans-serif; /* You can change the font family */
-  background: #f5f5f5; /* Light grey background */
-  color: #333; /* Dark grey text */
-  background: url('assets/images/background-homepage.png') no-repeat center center fixed; /* Background image */
-  background-size: cover; /* Cover the entire screen */
-  line-height: 1.6;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh; /* Full viewport height */
-  padding: 20px;
+  background-image: url('assets/images/illustration-of-dojo-room-vector.jpg');
+  background-size: cover; /* Cover the entire space of the page */
+  background-repeat: no-repeat; /* Don't repeat the image */
+  background-attachment: fixed; /* Fix the position of the background image */
+  background-position: center; /* Center the background image */
 }
-
 /* Container for the content */
 .main-container {
-  background-color: #D32F2F; /* Red background for the box */
-  padding: 20px; /* Padding inside the box */
-  border-radius: 10px; /* Rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2); /* Shadow for depth */
-  color: white; /* White text color */
-  text-align: center; /* Center the text */
-  font-family: 'Kanit', sans-serif; /* Themed font style */
-  margin: 50px auto; /* Center the box in the page */
-  width: 80%; /* Width of the box */
-  max-width: 800px; /* Maximum width */
-  transition: all 0.3s ease; /* Smooth transition for hover effects */
+  background-color: rgba(0, 0, 0, 0.75);
+  /* Red background for the box */
+  padding: 20px;
+  /* Padding inside the box */
+  border-radius: 10px;
+  /* Rounded corners */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+  /* Shadow for depth */
+  color: white;
+  /* White text color */
+  text-align: center;
+  /* Center the text */
+  font-family: 'Kanit', sans-serif;
+  /* Themed font style */
+  margin: 50px auto;
+  /* Center the box in the page */
+  width: 35%;
+  /* Width of the box */
+  max-width: 800px;
+  /* Maximum width */
+  transition: all 0.3s ease;
+  /* Smooth transition for hover effects */
+  height: 35%;
+  position: center;
 }
 
 .main-container:hover {
-  transform: translateY(-5px); /* Lift the box slightly when hovered */
-  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3); /* Deeper shadow on hover */
+  transform: translateY(-5px);
+  /* Lift the box slightly when hovered */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  /* Deeper shadow on hover */
 }
 
 /* Styling the heading */
 .main-container h1 {
-  margin-bottom: 40px; /* Space below the heading */
+  margin-bottom: 40px;
+  /* Space below the heading */
 }
 
 /* Base button styles */
 .button {
-  background-color: #D32F2F; /* Red from the logo for a striking appearance */
-  color: white; /* White text to stand out */
-  border: 2px solid #4D4D4D; /* Dark border from the sword handle for contrast */
-  padding: 10px 20px; /* Padding inside the button */
-  font-family: 'Kanit', sans-serif; /* Assuming Kanit font similar to the logo text */
-  font-size: 18px; /* Slightly larger text for impact */
-  cursor: pointer; /* Cursor to indicate it's clickable */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Allows to set margins */
-  margin: 10px; /* Margin around buttons */
-  border-radius: 25px; /* Rounded corners for the button to match logo shape */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  background-color: #D32F2F;
+  /* Red from the logo for a striking appearance */
+  color: white;
+  /* White text to stand out */
+  border: 2px solid #4D4D4D;
+  /* Dark border from the sword handle for contrast */
+  padding: 10px 20px;
+  /* Padding inside the button */
+  font-family: 'Kanit', sans-serif;
+  /* Assuming Kanit font similar to the logo text */
+  font-size: 18px;
+  /* Slightly larger text for impact */
+  cursor: pointer;
+  /* Cursor to indicate it's clickable */
+  text-decoration: none;
+  /* No underline */
+  display: inline-block;
+  /* Allows to set margins */
+  margin: 10px;
+  /* Margin around buttons */
+  border-radius: 25px;
+  /* Rounded corners for the button to match logo shape */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition for hover effects */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* Subtle shadow for depth */
 }
 
 .button:hover {
-  background-color: #E64A19; /* A warmer hover color */
-  transform: translateY(-2px); /* Slight raise effect on hover */
-  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3); /* Deeper shadow on hover for a "lifting" effect */
+  background-color: #E64A19;
+  /* A warmer hover color */
+  transform: translateY(-2px);
+  /* Slight raise effect on hover */
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
+  /* Deeper shadow on hover for a "lifting" effect */
 }
 
 /* Button focus state */
 .button:focus {
-  outline: none; /* Remove the outline on focus */
+  outline: none;
+  /* Remove the outline on focus */
 }
 
 .button {
-  background-color: #D32F2F; /* Red from the logo for a striking appearance */
-  color: white; /* White text to stand out */
-  border: 2px solid #4D4D4D; /* Dark border from the sword handle for contrast */
-  padding: 10px 20px; /* Padding inside the button */
-  font-family: 'Kanit', sans-serif; /* Assuming Kanit font similar to the logo text */
-  font-size: 18px; /* Slightly larger text for impact */
-  cursor: pointer; /* Cursor to indicate it's clickable */
-  text-decoration: none; /* No underline */
-  display: inline-block; /* Allows to set margins */
-  margin: 10px; /* Margin around buttons */
-  border-radius: 25px; /* Rounded corners for the button to match logo shape */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition for hover effects */
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Subtle shadow for depth */
+  background-color: #D32F2F;
+  /* Red from the logo for a striking appearance */
+  color: white;
+  /* White text to stand out */
+  border: 2px solid #4D4D4D;
+  /* Dark border from the sword handle for contrast */
+  padding: 10px 20px;
+  /* Padding inside the button */
+  font-family: 'Kanit', sans-serif;
+  /* Assuming Kanit font similar to the logo text */
+  font-size: 18px;
+  /* Slightly larger text for impact */
+  cursor: pointer;
+  /* Cursor to indicate it's clickable */
+  text-decoration: none;
+  /* No underline */
+  display: inline-block;
+  /* Allows to set margins */
+  margin: 10px;
+  /* Margin around buttons */
+  border-radius: 25px;
+  /* Rounded corners for the button to match logo shape */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Smooth transition for hover effects */
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  /* Subtle shadow for depth */
 }
 
 .button:hover {
-  background-color: #E64A19; /* A warmer hover color */
-  transform: translateY(-2px); /* Slight raise effect on hover */
-  box-shadow: 0 6px 12px 0 rgba(0,0,0,0.3); /* Deeper shadow on hover for a "lifting" effect */
+  background-color: #E64A19;
+  /* A warmer hover color */
+  transform: translateY(-2px);
+  /* Slight raise effect on hover */
+  box-shadow: 0 6px 12px 0 rgba(0, 0, 0, 0.3);
+  /* Deeper shadow on hover for a "lifting" effect */
+}
+
+.site-footer {
+  background-color: rgba(52, 58, 64, 0.95); /* Dark background for the footer */
+  color: white; /* White text color */
+  text-align: center; /* Center the text inside the footer */
+  padding: 20px 0; /* Padding above and below the footer content */
+  font-size: 0.8rem; /* Smaller font size for the footer */
+  position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+.footer-content {
+  max-width: 1200px; /* Maximum width of the footer content */
+  margin: 0 auto; /* Center the footer content */
+  display: flex; /* Use flexbox to align items */
+  justify-content: space-between; /* Space out the copyright and nav */
+  align-items: center; /* Align items vertically */
+  flex-wrap: wrap; /* Wrap items to a new line on small screens */
+}
+
+.footer-nav ul {
+  list-style: none; /* Remove default list styling */
+  padding: 0; /* Remove default padding */
+  display: flex; /* Display nav items in a row */
+}
+
+.footer-nav li {
+  margin: 0 10px; /* Space out the nav items */
+}
+
+.footer-nav a {
+  color: white; /* White text for links */
+  text-decoration: none; /* No underline on links */
+  transition: color 0.3s ease; /* Transition for hover effect */
+}
+
+.footer-nav a:hover {
+  color: #aaa; /* Lighter color on hover for links */
+}
+
+@media (max-width: 600px) {
+  .footer-content {
+      flex-direction: column; /* Stack items vertically on small screens */
+  }
+  .footer-nav {
+      margin-top: 10px; /* Add space above nav on small screens */
+  }
 }

@@ -1,0 +1,252 @@
+/*Header CSS*/
+.site-header {
+    width: 100%; /* Spans the full width of the page */
+    position: fixed; /* Fixes the header to the top of the page */
+    top: 0; /* Aligns the header to the very top */
+    left: 0; /* Aligns the header to the left edge */
+    z-index: 1000; /* Ensures the header stays on top of other content */
+    background: #ffffff; /* Or any color that fits your design */
+    background-color: rgba(52, 58, 64, 0.95); /* Or any other color you prefer */
+    padding: 10px 0; /* Increased padding for a taller header */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header-inner {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    display: block; /* Fixes inline spacing issue */
+    height: auto; /* Maintain aspect ratio */
+    max-height: 60px; /* Increase this value to increase the logo size */
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .main-nav li {
+    padding: 0 15px; /* Spacing between nav items */
+  }
+  
+  .main-nav a {
+    text-decoration: none;
+    color: white; /* For light text */
+    font-family: 'Kanit', sans-serif;
+    padding: 10px 15px; /* Add padding to create a larger clickable area */
+    transition: background-color 0.3s; /* Smooth transition for background color */
+  }
+  
+  .main-nav a:hover {
+    background-color: rgba(255, 255, 255, 0.2); /* Subtle white background on hover */
+    border-radius: 5px; /* Optional: adds rounded corners to the background */
+  }
+/* Global styles */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: url('assets/images/background-homepage.png') no-repeat center center fixed; 
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 70px;
+}
+
+.category-menu {
+    padding: 30px;
+    background: rgba(52, 58, 64, 0.95); /* Slightly more opaque for better readability */
+    border-radius: 15px; /* Larger border radius for a softer look */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15); /* Softer shadow for depth */
+    width: 80%; /* Slightly narrower for a centered look */
+    max-width: 400px; /* Smaller max-width for better button alignment */
+    margin: 50px auto; /* More vertical space */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center; /* Center the text for aesthetics */
+    position: absolute;
+    top:15%;
+}
+
+.category-menu h2 {
+    margin-bottom: 20px; /* Add space below the heading */
+    color: #ffffff; /* Dark color for the text */
+    font-size: 24px; /* Larger font size for the heading */
+}
+
+.category-menu button {
+    background-color: #2c3e50; /* Dark blue background color */
+    color: white; /* White text color */
+    border: none; /* Remove borders */
+    border-radius: 5px; /* Rounded corners for the buttons */
+    padding: 10px 20px; /* Top/bottom, left/right padding */
+    margin: 10px 0; /* Space between buttons */
+    width: 100%; /* Full width buttons */
+    box-sizing: border-box; /* Ensure padding doesn't affect the width */
+    font-size: 18px; /* Larger font size for better readability */
+    cursor: pointer; /* Cursor to pointer to indicate clickability */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.category-menu button:hover {
+    background-color: #2c3e50; /* Darken button on hover for interaction feedback */
+}
+
+/* Container for the quiz */
+.quiz-container {
+    padding: 20px;
+    background: rgba(52, 58, 64, 0.95);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px; /* Adjust width as necessary */
+    margin: auto;
+    margin-top: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Styling for the quiz questions and answers */
+.question {
+    font-size: 1.2em;
+    font: 'Kanit', sans-serif;
+    color: white;
+    margin-bottom: 10px;
+}
+
+.answer {
+    padding: 5px 0; /* Adds space above and below each answer */
+    font: 'Kanit', sans-serif;
+    color: white;
+}
+
+/* Button styling */
+button#submit {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+button#submit:hover {
+    background-color: #34495e;
+}
+
+#retryButton {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #2c3e50;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    margin-top: 20px; /* Space above the button */
+}
+
+#retryButton:hover {
+    background-color: #34495e;
+}
+
+/* Results styling */
+#results {
+    font-size: 1.2em;
+    color: #16a085;
+    margin-top: 20px;
+}
+.home-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+    background-color: #34495e; /* A green color to indicate success */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    text-align: center;
+    text-decoration: none; /* Remove underline from the link */
+    margin-top: 20px; /* Space above the button */
+}
+
+.home-button:hover {
+    background-color: #34495e;
+}
+
+.site-footer {
+    background-color: rgba(52, 58, 64, 0.95); /* Dark background for the footer */
+    color: white; /* White text color */
+    text-align: center; /* Center the text inside the footer */
+    padding: 20px 0; /* Padding above and below the footer content */
+    font-size: 0.8rem; /* Smaller font size for the footer */
+    position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+  }
+  
+  .footer-content {
+    max-width: 1200px; /* Maximum width of the footer content */
+    margin: 0 auto; /* Center the footer content */
+    display: flex; /* Use flexbox to align items */
+    justify-content: space-between; /* Space out the copyright and nav */
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Wrap items to a new line on small screens */
+  }
+  
+  .footer-nav ul {
+    list-style: none; /* Remove default list styling */
+    padding: 0; /* Remove default padding */
+    display: flex; /* Display nav items in a row */
+  }
+  
+  .footer-nav li {
+    margin: 0 10px; /* Space out the nav items */
+  }
+  
+  .footer-nav a {
+    color: white; /* White text for links */
+    text-decoration: none; /* No underline on links */
+    transition: color 0.3s ease; /* Transition for hover effect */
+  }
+  
+  .footer-nav a:hover {
+    color: #aaa; /* Lighter color on hover for links */
+  }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .quiz-container {
+        width: 95%;
+    }
+    .category-menu {
+        width: 95%;
+        padding: 20px;
+    }
+    .category-menu button {
+        font-size: 16px;
+        padding: 8px 16px;
+    }
+    .footer-content {
+        flex-direction: column; /* Stack items vertically on small screens */
+    }
+    .footer-nav {
+        margin-top: 10px; /* Add space above nav on small screens */
+    }
+}

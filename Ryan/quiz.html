@@ -3,15 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Simple Quiz</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Quiz Categories</title>
+    <link rel="stylesheet" href="quiz-styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Kanit:400,700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <div class="quiz-container">
+    <header class="site-header">
+        <div class="header-inner">
+            <img src="assets/images/logo.png" alt="Quiz Samurai Logo" class="logo">
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="game.html">Game</a></li>
+                    <li><a href="quiz.html">Quiz</a></li>
+                    <li><a href="about.html">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="category-menu">
+        <h2>Select a category:</h2>
+        <button onclick="loadCategory('webdev')">Web Development</button>
+        <button onclick="loadCategory('prog')">Programming</button>
+        <button onclick="loadCategory('math')">Mathematics</button>
+    </div>
+
+    <div class="quiz-container" style="display: none;">
         <div id="quiz"></div>
         <button id="submit">Submit Quiz</button>
         <div id="results"></div>
     </div>
     <script src="script.js"></script>
+
+    <footer class="site-footer">
+        <div class="footer-content">
+            <p>&copy; 2024 Quiz Samurai. All rights reserved.</p>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="donation.html">Donation</a></li>
+                    <li><a href="about.html">GitHub</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
 </body>
 </html>
