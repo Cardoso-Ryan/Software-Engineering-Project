@@ -7,7 +7,6 @@ class PlayScene extends Phaser.Scene {
     this.score = 0;
     this.createBackground();
     this.createCursor();
-    this.createLives();
     this.createBamboo();
     this.createNameInput();
     this.createScoreboard();
@@ -23,14 +22,6 @@ class PlayScene extends Phaser.Scene {
 
   createCursor() {
     this.input.setDefaultCursor("url(assets/images/katanaMin.png), pointer");
-  }
-
-  createLives() {
-    this.livesImages = {
-      x: this.add.image(880, 35, "x").setScale(1.2),
-      xx: this.add.image(920, 30, "xx").setScale(1.4),
-      xxx: this.add.image(970, 25, "xxx").setScale(1.6),
-    };
   }
 
   createBamboo() {
