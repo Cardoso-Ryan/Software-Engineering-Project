@@ -80,7 +80,14 @@
     background-repeat: no-repeat;
     background-attachment: fixed; /* Keep the background stationary */
   }
-
+  #gameContainer {
+    width: 800px;
+    height: 600px;
+    margin: 0 auto;  /* Centers the container on the page*/
+    background-color: #000; /* Ensures there is a visible background*/
+    border: 1px solid #fff; /* Adds a border for clarity during development*/
+    position: relative;
+  }
 /* Set the size and alignment of the main container */
 .main-container {
     width: 800px; /* Match the width of your Phaser game config */
