@@ -7,7 +7,8 @@ class HomeScene extends Phaser.Scene {
         // load assets of the background and the bamboos into the game
         this.load.image("background", "assets/images/background_trees.jpg");
         this.load.image("bamboo", "assets/images/bamboo.png");
-        this.load.image("bambooCut", "assets/images/bambooCut.png");   
+        this.load.image("bambooCut", "assets/images/bambooCut.png");
+        this.load.image("smoke", "assets/images/smoke.png");
     }
 
     create(){

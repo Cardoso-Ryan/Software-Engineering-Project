@@ -10,6 +10,8 @@ class PlayScene extends Phaser.Scene {
     this.createBamboo();
     this.createNameInput();
     this.createScoreboard();
+
+    const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
 
   update() {
@@ -112,6 +114,7 @@ class PlayScene extends Phaser.Scene {
   playSmokeAnimation(gameObject) {
     this.anims.create({
       key: "smoke",
+      url: "assets/images/smoke.png",
       frames: this.anims.generateFrameNumbers("smoke"),
       frameRate: 20,
       repeat: 0,
