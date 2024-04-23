@@ -1,7 +1,7 @@
 var configScreen = {
     type: Phaser.AUTO,
     parent: 'gameContainer',
-    width: 800,
+    width: 1000,
     height: 600,
     backgroundColor: 0x000000,
     scene: [HomeScene, PlayScene]

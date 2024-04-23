@@ -18,7 +18,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   createBackground() {
-    this.background = this.add.image(0, 0, "background").setOrigin(0, 0).setScale(1.6);
+    this.background = this.add.image(0, 0, "background").setOrigin(0, 0).setScale(1.8);
   }
 
   createCursor() {

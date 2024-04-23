@@ -5,7 +5,7 @@ class HomeScene extends Phaser.Scene {
 
     preload(){
         // Chargement de la vie des joueur en haut a droite
-        this.load.image("background", "assets/images/background.jpg");
+        this.load.image("background", "assets/images/background_trees.jpg");
         this.load.image("x", "assets/images/x.png");
         this.load.image("xf", "assets/images/xf.png");
         this.load.image("xx", "assets/images/xx.png");
