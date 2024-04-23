@@ -36,11 +36,15 @@ class PlayScene extends Phaser.Scene {
   createBamboo() {
     this.bamboo = this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2,"bamboo");
     this.bamboo.setInteractive();
+    this.bamboo.isCut = false; 
     this.bamboo.on("pointerdown", this.destroyBamboo, this);
     // Add pointerover event to cut the bamboo when mouse hovers over it
     this.bamboo.on("pointerover", () => {
-      this.bamboo.setTexture("bambooCut");
-      this.updateScore();
+        if (!this.bamboo.isCut) { // Check if the bamboo has been cut
+            this.bamboo.setTexture("bambooCut");
+            this.bamboo.isCut = true; // Set the bamboo as cut
+            this.updateScore();
+          }
     });
   }
 
@@ -100,15 +104,18 @@ class PlayScene extends Phaser.Scene {
   }
 
   resetBambooPos(bamboo) {
+    bamboo.isCut = false; // Reset the cut status when bamboo is reset
+    bamboo.setTexture("bamboo");
     bamboo.y = 0;
     bamboo.x = Phaser.Math.Between(0, this.sys.game.config.width);
-    bamboo.setTexture("bamboo");
   }
 
   destroyBamboo(pointer, gameObject) {
-    gameObject.setTexture("bambooCut");
-    gameObject.disableInteractive();
-    this.playSmokeAnimation(gameObject);
+    if (!gameObject.isCut) {
+        gameObject.setTexture("bambooCut");
+        gameObject.disableInteractive();
+        this.playSmokeAnimation(gameObject);
+      }
   }
 
   playSmokeAnimation(gameObject) {
