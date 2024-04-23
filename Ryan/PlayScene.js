@@ -9,7 +9,7 @@ class PlayScene extends Phaser.Scene {
     this.createCursor();
     this.createLives();
     this.createBamboo();
-    this.addGameText();
+    this.createNameInput();
     this.createScoreboard();
   }
 
@@ -44,8 +44,38 @@ class PlayScene extends Phaser.Scene {
     });
   }
 
+  createNameInput() {
+    const style = { font: '32px Kanit', fill: 'lime' };
+    this.add.text(20, 50, "Name:", style);
+  
+    // Create an input field using DOM element
+    let element = this.add.dom(150, 100, 'input', {
+      'type': 'text',
+      'placeholder': 'Enter your name',
+      'style': 'width: 200px; height: 24px; font-size: 22px; text-align: center; padding: 10px; border: none; border-radius: 4px; background-color: white; color: black;'
+    });
+  
+    element.node.focus();  // Automatically focus on the input field
+  
+    element.addListener('input');
+    element.on('input', (event) => {
+      this.playerName = event.target.value;
+      this.updatePlayerNameDisplay(); // Update display if needed
+    });
+  }
+  
+  updatePlayerNameDisplay() {
+    if (!this.playerNameDisplay) {
+      this.playerNameDisplay = this.add.text(20, 130, '', { font: '32px Arial', fill: '#fff' });
+    }
+    this.playerNameDisplay.setText(`Player: ${this.playerName}`);
+  }
+  
+
   addGameText() {
-    this.add.text(20, 20, "Playing game", { font: "25px Kanit", fill: "lime" });
+    const style = { font: "25px Kanit", fill: "lime" };
+    this.gameText = this.add.text(20, 20, "", style);
+    this.gameText.setText('Playing as: ' + (this.playerName || ''));
   }
 
   createScoreboard() {
