@@ -42,7 +42,7 @@ class PlayScene extends Phaser.Scene {
     }
   
     addGameText() {
-      this.add.text(20, 20, "Playing game", { font: "25px KleeOne", fill: "lime" });
+      this.add.text(20, 20, "Playing game", { font: "25px Kanit", fill: "lime" });
     }
   
     updateBamboo() {
