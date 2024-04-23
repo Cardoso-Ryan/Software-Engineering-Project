@@ -6,7 +6,7 @@ class PlayScene extends Phaser.Scene {
     create(){
         this.background = this.add.image(0,0,"background");
         this.background.setOrigin(0,0);
-        this.background.setScale(1.6);
+        this.background.setScale(1.8);
 
         // Customizable cursor
         this.input.setDefaultCursor('url(assets/images/katanaMin.png), pointer');
@@ -31,7 +31,7 @@ class PlayScene extends Phaser.Scene {
 
         // Affichage de la bombe
         this.bomb = this.add.image(configScreen.width/2, configScreen.height/2, "bomb");
-        this.add.text(20, 20, "Playing game", {font: "25px KleeOne" , fill: "lime"});
+        this.add.text(20, 20, "Version 0.1.0", {font: "25px KleeOne" , fill: "lime"});
     
         // Creation de l'animation de fumé en cliquant sur la bombe
         this.anims.create({
