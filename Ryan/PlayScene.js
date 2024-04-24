@@ -21,7 +21,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   createCursor() {
-    this.input.setDefaultCursor("url(assets/images/katanaMin.png), pointer");
+    this.input.setDefaultCursor("url(assets/images/katana.png), pointer");
   }
 
   createBamboo() {
