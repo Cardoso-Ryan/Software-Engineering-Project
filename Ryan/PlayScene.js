@@ -4,12 +4,14 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
+    this.level = 1;
     this.score = 0;
     this.createBackground();
     this.createCursor();
     this.createBamboo();
     this.createNameInput();
     this.createScoreboard();
+    this.displayLevel();
 
     const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
@@ -82,6 +84,15 @@ class PlayScene extends Phaser.Scene {
   updateScore() {
     this.score += 1; // Increase score
     this.scoreText.setText('Score: ' + this.score); // Update score text
+  }
+
+  displayLevel() {
+    this.levelText = this.add.text(880, 20, 'Level: 1', { font: '25px Kanit', fill: 'lime' });
+  }
+
+  updateLevel() {
+    this.level++;
+    this.levelText.setText('Level: ' + this.level);
   }
 
   updateBamboo() {
