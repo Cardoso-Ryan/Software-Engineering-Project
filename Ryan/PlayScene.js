@@ -44,7 +44,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   createNameInput() {
-    const style = { font: '32px Kanit', fill: 'lime' };
+    const style = { font: '32px Kanit', fill: 'white' };
     this.add.text(20, 50, "Name:", style);
   
     // Create an input field using DOM element
@@ -72,13 +72,13 @@ class PlayScene extends Phaser.Scene {
   
 
   addGameText() {
-    const style = { font: "25px Kanit", fill: "lime" };
+    const style = { font: "25px Kanit", fill: "white" };
     this.gameText = this.add.text(20, 20, "", style);
     this.gameText.setText('Playing as: ' + (this.playerName || ''));
   }
 
   createScoreboard() {
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { font: '25px Kanit', fill: 'lime' });
+    this.scoreText = this.add.text(16, 16, 'Score: 0', { font: '25px Kanit', fill: 'white' });
   }
 
   updateScore() {
@@ -87,7 +87,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   displayLevel() {
-    this.levelText = this.add.text(880, 20, 'Level: 1', { font: '25px Kanit', fill: 'lime' });
+    this.levelText = this.add.text(880, 20, 'Level: 1', { font: '25px Kanit', fill: 'white' });
   }
 
   updateLevel() {
