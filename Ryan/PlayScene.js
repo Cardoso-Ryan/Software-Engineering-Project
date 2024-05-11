@@ -4,12 +4,16 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
+    this.level = 1;
     this.score = 0;
     this.createBackground();
     this.createCursor();
     this.createBamboo();
     this.createNameInput();
     this.createScoreboard();
+    this.displayLevel();
+
+    const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
 
   update() {
@@ -21,7 +25,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   createCursor() {
-    this.input.setDefaultCursor("url(assets/images/katanaMin.png), pointer");
+    this.input.setDefaultCursor("url(assets/images/katana.png), pointer");
   }
 
   createBamboo() {
@@ -40,7 +44,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   createNameInput() {
-    const style = { font: '32px Kanit', fill: 'lime' };
+    const style = { font: '32px Kanit', fill: 'white' };
     this.add.text(20, 50, "Name:", style);
   
     // Create an input field using DOM element
@@ -68,18 +72,27 @@ class PlayScene extends Phaser.Scene {
   
 
   addGameText() {
-    const style = { font: "25px Kanit", fill: "lime" };
+    const style = { font: "25px Kanit", fill: "white" };
     this.gameText = this.add.text(20, 20, "", style);
     this.gameText.setText('Playing as: ' + (this.playerName || ''));
   }
 
   createScoreboard() {
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { font: '25px Kanit', fill: 'lime' });
+    this.scoreText = this.add.text(16, 16, 'Score: 0', { font: '25px Kanit', fill: 'white' });
   }
 
   updateScore() {
     this.score += 1; // Increase score
     this.scoreText.setText('Score: ' + this.score); // Update score text
+  }
+
+  displayLevel() {
+    this.levelText = this.add.text(880, 20, 'Level: 1', { font: '25px Kanit', fill: 'white' });
+  }
+
+  updateLevel() {
+    this.level++;
+    this.levelText.setText('Level: ' + this.level);
   }
 
   updateBamboo() {
@@ -112,6 +125,7 @@ class PlayScene extends Phaser.Scene {
   playSmokeAnimation(gameObject) {
     this.anims.create({
       key: "smoke",
+      url: "assets/images/smoke.png",
       frames: this.anims.generateFrameNumbers("smoke"),
       frameRate: 20,
       repeat: 0,

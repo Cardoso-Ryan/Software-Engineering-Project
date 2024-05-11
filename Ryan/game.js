@@ -4,7 +4,12 @@ var configScreen = {
     width: 1000,
     height: 600,
     backgroundColor: 0x000000,
-    scene: [HomeScene, PlayScene]
+    scene: [HomeScene, PlayScene],
+    //fps regulator
+    fps: {
+        target: 120,
+        forceSetTimeOut: true
+    },
 }
 
 window.onload = function() {
