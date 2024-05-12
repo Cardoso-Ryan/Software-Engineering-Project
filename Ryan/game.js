@@ -8,12 +8,12 @@ var configScreen = {
     //fps regulator
     fps: {
         target: 120,
-        forceSetTimeOut: true
+        forceSetTimeOut: true,
     },
 }
 
-var difficulty = 'easy'; // Default difficulty
-
+//var difficulty = 'easy'; // Default difficulty
+/*
 function setDifficulty(level) {
     difficulty = level;
     document.querySelector('.difficulty-menu').style.display = 'none';
@@ -24,4 +24,4 @@ function setDifficulty(level) {
 window.onload = function() {
     var game = new Phaser.Game(configScreen);
     
-}
+}*/

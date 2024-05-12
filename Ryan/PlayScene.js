@@ -14,7 +14,7 @@ class PlayScene extends Phaser.Scene {
     this.createScoreboard();
     this.displayLevel();
 
-    const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
+  //  const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
 
   setupDifficulty() {
@@ -26,13 +26,14 @@ class PlayScene extends Phaser.Scene {
             this.bambooSpeed = 5;
             break;
         case 'impossible':
-            this.bambooSpeed = 8;
+            this.bambooSpeed =10;
             break;
     }
 }
 
   update() {
     this.updateBamboo();
+    this.updateLevel();
   }
 
   createBackground() {
@@ -47,7 +48,7 @@ class PlayScene extends Phaser.Scene {
     this.bamboo = this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2,"bamboo");
     this.bamboo.setInteractive();
     this.bamboo.isCut = false; 
-    this.bamboo.on("pointerdown", this.destroyBamboo, this);
+    this.bamboo.on("pointerdown", this.killBamboo, this);
     // Add pointerover event to cut the bamboo when mouse hovers over it
     this.bamboo.on("pointerover", () => {
         if (!this.bamboo.isCut) { // Check if the bamboo has been cut
@@ -106,7 +107,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   updateLevel() {
-    this.level++;
+    this.level++; //to change so that the level increases by reaching certain score
     this.levelText.setText('Level: ' + this.level);
   }
 
@@ -129,15 +130,15 @@ class PlayScene extends Phaser.Scene {
     bamboo.x = Phaser.Math.Between(0, this.sys.game.config.width);
   }
 
-  destroyBamboo(pointer, gameObject) {
+  killBamboo(pointer, gameObject) {
     if (!gameObject.isCut) {
         gameObject.setTexture("bambooCut");
         gameObject.disableInteractive();
-        this.playSmokeAnimation(gameObject);
+       // this.playSmokeAnimation(gameObject);
       }
   }
 
-  playSmokeAnimation(gameObject) {
+ /* playSmokeAnimation(gameObject) {
     this.anims.create({
       key: "smoke",
       url: "assets/images/smoke.png",
@@ -149,7 +150,7 @@ class PlayScene extends Phaser.Scene {
 
     gameObject.play("smoke");
     gameObject.on("animationcomplete", () => {
-      gameObject.destroy();
+      gameObject.kill();
     });
-  }
+  }*/
 }
