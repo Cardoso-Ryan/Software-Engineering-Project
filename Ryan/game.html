@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="game-styles.css">
-    <title>Quiz Samurai</title>
+    <title>Quiz Samurai - Game</title>
 </head>
 
 <body>
@@ -22,20 +22,29 @@
         </div>
     </header>
 
-    <div id="gameContainer" style="width: 1000px; height: 600px;"></div>
-
-    <div class="main-container">
-        <script type="text/javascript" src="phaser.min.js"></script>
-        <script type="text/javascript" src="HomeScene.js"></script>
-        <script type="text/javascript" src="PlayScene.js"></script>
-        <script type="text/javascript" src="game.js"></script>
-
-        <script>
-            var runGame = function () {
-                document.getElementById("Head").style.display = "none";
-            };
-        </script>
+    <div class="difficulty-menu">
+        <h2>Select Difficulty:</h2>
+        <button onclick="setDifficulty('easy')">Easy</button>
+        <button onclick="setDifficulty('medium')">Medium</button>
+        <button onclick="setDifficulty('impossible')">Impossible</button>
     </div>
+
+    <div id="gameContainer" style="width: 1000px; height: 600px; display: none;"></div>
+
+    <script type="text/javascript" src="phaser.min.js"></script>
+    <script type="text/javascript" src="HomeScene.js"></script>
+    <script type="text/javascript" src="PlayScene.js"></script>
+    <script type="text/javascript" src="game.js"></script>
+    <script>
+        var difficulty = 'easy'; // Default difficulty
+
+        function setDifficulty(level) {
+            difficulty = level;
+            document.querySelector('.difficulty-menu').style.display = 'none';
+            document.getElementById('gameContainer').style.display = 'block';
+            var game = new Phaser.Game(configScreen);
+        }
+    </script>
 
     <footer class="site-footer">
         <div class="footer-content">

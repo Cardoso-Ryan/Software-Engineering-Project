@@ -6,6 +6,7 @@ class PlayScene extends Phaser.Scene {
   create() {
     this.level = 1;
     this.score = 0;
+    this.setupDifficulty();
     this.createBackground();
     this.createCursor();
     this.createBamboo();
@@ -15,6 +16,20 @@ class PlayScene extends Phaser.Scene {
 
     const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
+
+  setupDifficulty() {
+    switch (difficulty) {
+        case 'easy':
+            this.bambooSpeed = 2;
+            break;
+        case 'medium':
+            this.bambooSpeed = 5;
+            break;
+        case 'impossible':
+            this.bambooSpeed = 8;
+            break;
+    }
+}
 
   update() {
     this.updateBamboo();
@@ -97,7 +112,7 @@ class PlayScene extends Phaser.Scene {
 
   updateBamboo() {
     this.bamboo.angle += 2.5;
-    this.moveBamboo(this.bamboo, 5);
+    this.moveBamboo(this.bamboo, this.bambooSpeed);
   }
 
   moveBamboo(bamboo, speed) {
