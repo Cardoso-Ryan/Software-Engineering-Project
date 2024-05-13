@@ -33,7 +33,7 @@ class PlayScene extends Phaser.Scene {
 
   update() {
     this.updateBamboo();
-    this.updateLevel();
+    //this.updateLevel();
   }
 
   createBackground() {
@@ -100,6 +100,11 @@ class PlayScene extends Phaser.Scene {
   updateScore() {
     this.score += 1; // Increase score
     this.scoreText.setText('Score: ' + this.score); // Update score text
+  
+    // Check if the score is a multiple of 20 to increase the level
+    if (this.score % 20 === 0) {
+      this.updateLevel();
+    }
   }
 
   displayLevel() {
@@ -107,7 +112,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   updateLevel() {
-    this.level++; //to change so that the level increases by reaching certain score
+    this.level++;
     this.levelText.setText('Level: ' + this.level);
   }
 
