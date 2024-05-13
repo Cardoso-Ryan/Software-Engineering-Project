@@ -9,6 +9,7 @@ class HomeScene extends Phaser.Scene {
         this.load.image("bamboo", "assets/images/bamboo.png");
         this.load.image("bambooCut", "assets/images/bambooCut.png");
         this.load.image("smoke", "assets/images/smoke.png");
+        this.load.image("bomb", "assets/images/bomb.png");
     }
 
     create(){

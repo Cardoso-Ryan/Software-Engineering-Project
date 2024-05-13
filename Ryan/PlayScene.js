@@ -4,6 +4,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
+    this.bombs = [];
     this.level = 1;
     this.score = 0;
     this.setupDifficulty();
@@ -102,7 +103,7 @@ class PlayScene extends Phaser.Scene {
     this.scoreText.setText('Score: ' + this.score); // Update score text
   
     // Check if the score is a multiple of 20 to increase the level
-    if (this.score % 20 === 0) {
+    if (this.score % 5 === 0) {
       this.updateLevel();
     }
   }
@@ -114,7 +115,56 @@ class PlayScene extends Phaser.Scene {
   updateLevel() {
     this.level++;
     this.levelText.setText('Level: ' + this.level);
+    this.resizeBamboo();
+    this.adjustGameDifficulty(); // Handle other changes based on level
   }
+
+  resizeBamboo() {
+    if (this.level === 2) {
+      this.bamboo.setScale(0.8); // Smaller bamboo at level 2
+    } else {
+      this.bamboo.setScale(1); // Normal size for other levels
+    }
+  }
+
+  adjustGameDifficulty() {
+    switch (this.level) {
+      case 3:
+        this.bambooSpeed = this.bambooSpeed + 1; // Increase bamboo speed
+        break;
+      case 4:
+        this.createObstacles(); // Introduce obstacles
+        break;
+      case 5:
+        this.allowMultipleBamboos = true; // Allow multiple bamboos
+        break;
+    }
+  }
+
+createObstacles() {
+  this.bomb = this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2,"bomb");
+  this.bomb.setInteractive();
+  this.bomb.isCut = false; 
+  this.bomb.on("pointerdown", this.killBomb, this);
+  // Add pointerover event to cut the bomb when mouse hovers over it
+  this.bomb.on("pointerover", () => {
+      if (!this.bomb.isCut) { // Check if the bomb has been cut
+          this.bomb.setTexture("smoke");
+          this.bomb.isCut = true; // Set the bomb as cut
+          this.updateScore();
+        }
+  });
+}
+
+updateObstacles() {
+  this.bombs.forEach(bomb => {
+    if (bomb.y > this.sys.game.config.height) {
+      // Reset bomb position to top with a new random x position
+      bomb.y = -50;
+      bomb.x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
+    }
+  });
+}
 
   updateBamboo() {
     this.bamboo.angle += 2.5;
@@ -128,6 +178,44 @@ class PlayScene extends Phaser.Scene {
     }
   }
 
+  updateBomb(){
+    this.bomb.angle += 2.5;
+    this.moveBomb(this.bomb, this.bambooSpeed);
+  }
+
+  moveBomb(bomb, speed){
+    bomb.y += speed;
+    if (bomb.y > this.sys.game.config.height){
+      this.resetBombPos(bomb);
+    }
+  }
+
+  resetBombPos(bomb){
+    bomb.isCut = false; // Reset the cut status when bomb is reset
+    bomb.setTexture("smoke");
+    bomb.y = 0;
+    bomb.x = Phaser.Math.Between(0, this.sys.game.config.width);
+  }
+
+  manageMultipleBamboos() {
+    // Check if there are fewer bamboos than the maximum allowed and add new ones
+    if (this.bamboos.length < this.maxBamboos) {
+      let newBamboo = this.createBamboo(Phaser.Math.Between(100, this.sys.game.config.width - 100), 0);
+      this.bamboos.push(newBamboo);
+    }
+  
+    // Update position of each bamboo, reset if it goes off-screen
+    this.bamboos.forEach(bamboo => {
+      bamboo.y += this.bambooSpeed;
+      if (bamboo.y > this.sys.game.config.height + 100) { // Reset bamboo position if it moves off the bottom
+        bamboo.y = 0;
+        bamboo.x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
+        bamboo.isCut = false;
+        bamboo.setTexture("bamboo");
+      }
+    });
+  }
+
   resetBambooPos(bamboo) {
     bamboo.isCut = false; // Reset the cut status when bamboo is reset
     bamboo.setTexture("bamboo");
@@ -138,6 +226,14 @@ class PlayScene extends Phaser.Scene {
   killBamboo(pointer, gameObject) {
     if (!gameObject.isCut) {
         gameObject.setTexture("bambooCut");
+        gameObject.disableInteractive();
+       // this.playSmokeAnimation(gameObject);
+      }
+  }
+
+  killBomb(pointer, gameObject) {
+    if (!gameObject.isCut) {
+        gameObject.setTexture("smoke");
         gameObject.disableInteractive();
        // this.playSmokeAnimation(gameObject);
       }
