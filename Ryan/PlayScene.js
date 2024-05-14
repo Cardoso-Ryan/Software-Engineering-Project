@@ -8,10 +8,14 @@ class PlayScene extends Phaser.Scene {
     this.level = 1;
     this.score = 0;
     this.cursorScale = 1;
+    this.bambooScale = 1; // Initial scale of bamboo
+    this.bambooSpeed = 2; // Initial speed
+    this.bombSpeed = 1;
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
     this.createBamboo();
+    //this.createBombs();
     this.createNameInput();
     this.createScoreboard();
     this.displayLevel();
@@ -24,14 +28,17 @@ class PlayScene extends Phaser.Scene {
         case 'easy':
             this.bambooSpeed = 2;
             this.cursorScale = 1;
+            this.bombSpeed = 1;
             break;
         case 'medium':
             this.bambooSpeed = 5;
             this.cursorScale = 0.8;
+            this.bombSpeed = 3;
             break;
         case 'impossible':
             this.bambooSpeed = 10;
             this.cursorScale = 0.4; // Reduce cursor size
+            this.bombSpeed = 5;
             break;
     }
     this.updateCursor();
@@ -39,6 +46,7 @@ class PlayScene extends Phaser.Scene {
 
   update() {
     this.updateBamboo();
+    //this.updateBombs();
     //this.updateLevel();
   }
 
@@ -67,6 +75,19 @@ class PlayScene extends Phaser.Scene {
     });
   }
 
+  createBombs() {
+    this.bombs = this.physics.add.group({
+      key: 'bomb',
+      repeat: 5,
+      setXY: { x: Phaser.Math.Between(0, this.sys.game.config.width), y: 0, stepX: 70 }
+    });
+
+    this.bombs.children.iterate((bomb) => {
+      bomb.setInteractive();
+      bomb.on("pointerdown", this.killBomb, this);
+    });
+  }
+
   createNameInput() {
     const style = { font: '32px Kanit', fill: 'white' };
     this.add.text(20, 50, "Name:", style);
@@ -86,7 +107,7 @@ class PlayScene extends Phaser.Scene {
       this.updatePlayerNameDisplay(); // Update display if needed
     });
   }
-  
+
   updatePlayerNameDisplay() {
     if (!this.playerNameDisplay) {
       this.playerNameDisplay = this.add.text(20, 130, '', { font: '32px Arial', fill: '#fff' });
@@ -179,9 +200,13 @@ updateCursor() {
     }
   }
 
-  updateBomb(){
-    this.bomb.angle += 2.5;
-    this.moveBomb(this.bomb, this.bambooSpeed);
+  updateBombs() {
+    this.bombs.children.iterate((bomb) => {
+      bomb.y += this.bombSpeed;
+      if (bomb.y > this.sys.game.config.height) {
+        this.resetBombPos(bomb);
+      }
+    });
   }
 
   moveBomb(bomb, speed){
@@ -236,6 +261,7 @@ updateCursor() {
     if (!gameObject.isCut) {
         gameObject.setTexture("smoke");
         gameObject.disableInteractive();
+        bomb.setVisible(false);
        // this.playSmokeAnimation(gameObject);
       }
   }
