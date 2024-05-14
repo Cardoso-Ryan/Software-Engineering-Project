@@ -20,6 +20,8 @@ class PlayScene extends Phaser.Scene {
     this.createScoreboard();
     this.displayLevel();
     this.createObstacles();
+    const Music = this.sound.add("Music");
+    Music.play();
 
   //  const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
@@ -73,6 +75,8 @@ class PlayScene extends Phaser.Scene {
             this.bamboo.setTexture("bambooCut");
             this.bamboo.isCut = true; // Set the bamboo as cut
             this.updateScore();
+            let cutAudio = this.sound.add("cutAudio")
+            cutAudio.play();
           }
     });
   }

@@ -10,6 +10,8 @@ class HomeScene extends Phaser.Scene {
         this.load.image("bambooCut", "assets/images/bambooCut.png");
         this.load.image("smoke", "assets/images/smoke.png");
         this.load.image("bomb", "assets/images/bomb.png");
+        this.load.audio("Music", [ "assets/audio/Entering_dojo.ogg", "assets/audio/Entering_dojo.mp3"]);
+        this.load.audio("cutAudio", [ "assets/audio/sound_effect.ogg", "assets/audio/sound_effect.mp3"]);
     }
 
     create(){
