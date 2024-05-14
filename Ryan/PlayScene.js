@@ -114,31 +114,20 @@ class PlayScene extends Phaser.Scene {
 
   updateLevel() {
     this.level++;
+    if (this.level >= 2) {
+      this.bambooScale = 0.8; // Scale up bamboo at level 2
+    }
+    if (this.level >= 3) {
+      this.bambooSpeed += 1; // Increase speed at level 3
+    }
+    if (this.level >= 4) {
+      this.createObstacles(); // Introduce bombs at level 4
+    }
+    if (this.level >= 5) {
+      this.allowMultipleBamboos = true;
+    }
+    this.bamboo.setScale(this.bambooScale); // Apply scale changes
     this.levelText.setText('Level: ' + this.level);
-    this.resizeBamboo();
-    this.adjustGameDifficulty(); // Handle other changes based on level
-  }
-
-  resizeBamboo() {
-    if (this.level === 2) {
-      this.bamboo.setScale(0.8); // Smaller bamboo at level 2
-    } else {
-      this.bamboo.setScale(1); // Normal size for other levels
-    }
-  }
-
-  adjustGameDifficulty() {
-    switch (this.level) {
-      case 3:
-        this.bambooSpeed = this.bambooSpeed + 1; // Increase bamboo speed
-        break;
-      case 4:
-        this.createObstacles(); // Introduce obstacles
-        break;
-      case 5:
-        this.allowMultipleBamboos = true; // Allow multiple bamboos
-        break;
-    }
   }
 
 createObstacles() {
