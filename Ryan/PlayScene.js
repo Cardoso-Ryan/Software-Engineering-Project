@@ -7,6 +7,7 @@ class PlayScene extends Phaser.Scene {
     this.bombs = [];
     this.level = 1;
     this.score = 0;
+    this.cursorScale = 1;
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
@@ -22,14 +23,18 @@ class PlayScene extends Phaser.Scene {
     switch (difficulty) {
         case 'easy':
             this.bambooSpeed = 2;
+            this.cursorScale = 1;
             break;
         case 'medium':
             this.bambooSpeed = 5;
+            this.cursorScale = 0.8;
             break;
         case 'impossible':
-            this.bambooSpeed =10;
+            this.bambooSpeed = 10;
+            this.cursorScale = 0.4; // Reduce cursor size
             break;
     }
+    this.updateCursor();
 }
 
   update() {
@@ -42,7 +47,9 @@ class PlayScene extends Phaser.Scene {
   }
 
   createCursor() {
-    this.input.setDefaultCursor("url(assets/images/katana.png), pointer");
+    this.input.setDefaultCursor(`url(assets/images/katana.png), pointer`);
+    const cursorElement = document.querySelector('canvas');
+    cursorElement.style.cursor = `url(assets/images/katana.png) ${16 * this.cursorScale} ${16 * this.cursorScale}, pointer`;
   }
 
   createBamboo() {
@@ -153,6 +160,11 @@ updateObstacles() {
       bomb.x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
     }
   });
+}
+
+updateCursor() {
+  const cursorElement = document.querySelector('canvas');
+  cursorElement.style.cursor = `url(assets/images/katana.png) ${16 * this.cursorScale} ${16 * this.cursorScale}, pointer`;
 }
 
   updateBamboo() {
