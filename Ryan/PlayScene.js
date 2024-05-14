@@ -4,13 +4,13 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
-    this.bombs = [];
+   // this.bombs = [];
     this.level = 1;
     this.score = 0;
     this.cursorScale = 1;
     this.bambooScale = 1; // Initial scale of bamboo
     this.bambooSpeed = 2; // Initial speed
-    this.bombSpeed = 1;
+    //this.bombSpeed = 2;
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
@@ -19,6 +19,7 @@ class PlayScene extends Phaser.Scene {
     this.createNameInput();
     this.createScoreboard();
     this.displayLevel();
+    this.createObstacles();
 
   //  const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
   }
@@ -47,6 +48,7 @@ class PlayScene extends Phaser.Scene {
   update() {
     this.updateBamboo();
     //this.updateBombs();
+    this.updateObstacles();
     //this.updateLevel();
   }
 
@@ -75,7 +77,7 @@ class PlayScene extends Phaser.Scene {
     });
   }
 
-  createBombs() {
+ /* createBombs() {
     this.bombs = this.physics.add.group({
       key: 'bomb',
       repeat: 5,
@@ -85,6 +87,20 @@ class PlayScene extends Phaser.Scene {
     this.bombs.children.iterate((bomb) => {
       bomb.setInteractive();
       bomb.on("pointerdown", this.killBomb, this);
+    });
+  }*/
+
+  createObstacles() {
+    this.bomb = this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2,"bomb");
+    this.bomb.setInteractive();
+    this.bomb.isCut = false; 
+    this.bomb.on("pointerdown", this.killBomb, this);
+    // Add pointerover event to cut the bomb when mouse hovers over it
+    this.bomb.on("pointerover", () => {
+        if (!this.bomb.isCut) { // Check if the bomb has been cut
+            this.bomb.setTexture("smoke");
+            this.bomb.isCut = true; // Set the bomb as cut
+          }
     });
   }
 
@@ -158,35 +174,10 @@ class PlayScene extends Phaser.Scene {
     this.levelText.setText('Level: ' + this.level);
   }
 
-createObstacles() {
-  this.bomb = this.add.image(this.sys.game.config.width / 2, this.sys.game.config.height / 2,"bomb");
-  this.bomb.setInteractive();
-  this.bomb.isCut = false; 
-  this.bomb.on("pointerdown", this.killBomb, this);
-  // Add pointerover event to cut the bomb when mouse hovers over it
-  this.bomb.on("pointerover", () => {
-      if (!this.bomb.isCut) { // Check if the bomb has been cut
-          this.bomb.setTexture("smoke");
-          this.bomb.isCut = true; // Set the bomb as cut
-          this.updateScore();
-        }
-  });
-}
-
-updateObstacles() {
-  this.bombs.forEach(bomb => {
-    if (bomb.y > this.sys.game.config.height) {
-      // Reset bomb position to top with a new random x position
-      bomb.y = -50;
-      bomb.x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
-    }
-  });
-}
-
-updateCursor() {
-  const cursorElement = document.querySelector('canvas');
-  cursorElement.style.cursor = `url(assets/images/katana.png) ${16 * this.cursorScale} ${16 * this.cursorScale}, pointer`;
-}
+  updateCursor() {
+    const cursorElement = document.querySelector('canvas');
+    cursorElement.style.cursor = `url(assets/images/katana.png) ${16 * this.cursorScale} ${16 * this.cursorScale}, pointer`;
+  }
 
   updateBamboo() {
     this.bamboo.angle += 2.5;
@@ -200,7 +191,7 @@ updateCursor() {
     }
   }
 
-  updateBombs() {
+ /* updateBombs() {
     this.bombs.children.iterate((bomb) => {
       bomb.y += this.bombSpeed;
       if (bomb.y > this.sys.game.config.height) {
@@ -214,13 +205,25 @@ updateCursor() {
     if (bomb.y > this.sys.game.config.height){
       this.resetBombPos(bomb);
     }
+  }*/
+
+  updateObstacles() {
+    this.bomb.angle += 2;
+    this.moveObstacles(this.bomb, this.bombSpeed);
+  /*  this.bombs.forEach(bomb => {
+      if (bomb.y > this.sys.game.config.height) {
+        // Reset bomb position to top with a new random x position
+        bomb.y = -50;
+        bomb.x = Phaser.Math.Between(100, this.sys.game.config.width - 100);
+      }
+    });*/
   }
 
-  resetBombPos(bomb){
-    bomb.isCut = false; // Reset the cut status when bomb is reset
-    bomb.setTexture("smoke");
-    bomb.y = 0;
-    bomb.x = Phaser.Math.Between(0, this.sys.game.config.width);
+  moveObstacles(bomb, speed) {
+    bomb.y += speed;
+    if (bomb.y > this.sys.game.config.height) {
+      this.resetBombPos(bomb);
+    }
   }
 
   manageMultipleBamboos() {
@@ -247,6 +250,14 @@ updateCursor() {
     bamboo.setTexture("bamboo");
     bamboo.y = 0;
     bamboo.x = Phaser.Math.Between(0, this.sys.game.config.width);
+  }
+
+  resetBombPos(bomb){
+    bomb.isCut = false; // Reset the cut status when bomb is reset
+    bomb.setTexture("bomb");
+    bomb.y = 0;
+    bomb.x = Phaser.Math.Between(0, this.sys.game.config.width);
+    bomb.setVisible(false);
   }
 
   killBamboo(pointer, gameObject) {
