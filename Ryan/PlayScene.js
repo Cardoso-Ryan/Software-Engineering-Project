@@ -10,6 +10,7 @@ class PlayScene extends Phaser.Scene {
     this.cursorScale = 1;
     this.bambooScale = 1; // Initial scale of bamboo
     this.bambooSpeed = 2; // Initial speed
+    this.bombSpeed = 1;
     //this.bombSpeed = 2;
     this.setupDifficulty();
     this.createBackground();
@@ -20,7 +21,7 @@ class PlayScene extends Phaser.Scene {
     this.createScoreboard();
     this.displayLevel();
     this.createObstacles();
-    const Music = this.sound.add("Music");
+    const Music = this.sound.add("Music", {volume: 0.3});
     Music.play();
 
   //  const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
@@ -75,7 +76,7 @@ class PlayScene extends Phaser.Scene {
             this.bamboo.setTexture("bambooCut");
             this.bamboo.isCut = true; // Set the bamboo as cut
             this.updateScore();
-            let cutAudio = this.sound.add("cutAudio")
+            let cutAudio = this.sound.add("cutAudio", {volume: 0.2});
             cutAudio.play();
           }
     });
@@ -170,9 +171,10 @@ class PlayScene extends Phaser.Scene {
     }
     if (this.level >= 4) {
       this.createObstacles(); // Introduce bombs at level 4
+     // this.updateObstacles();
     }
     if (this.level >= 5) {
-      this.allowMultipleBamboos = true;
+      this.manageMultipleBamboos();
     }
     this.bamboo.setScale(this.bambooScale); // Apply scale changes
     this.levelText.setText('Level: ' + this.level);
