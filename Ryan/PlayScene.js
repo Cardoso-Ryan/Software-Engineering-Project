@@ -4,14 +4,13 @@ class PlayScene extends Phaser.Scene {
   }
 
   create() {
-   // this.bombs = [];
+    this.bombs = [];
     this.level = 1;
     this.score = 0;
     this.cursorScale = 1;
     this.bambooScale = 1; // Initial scale of bamboo
     this.bambooSpeed = 2; // Initial speed
     this.bombSpeed = 1;
-    //this.bombSpeed = 2;
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
@@ -50,8 +49,8 @@ class PlayScene extends Phaser.Scene {
 
   update() {
     this.updateBamboo();
-    //this.updateBombs();
-    this.updateObstacles();
+    this.updateBomb();
+    //this.updateObstacles();
     //this.updateLevel();
   }
 
@@ -170,7 +169,7 @@ class PlayScene extends Phaser.Scene {
       this.bambooSpeed += 1; // Increase speed at level 3
     }
     if (this.level >= 4) {
-      this.createObstacles(); // Introduce bombs at level 4
+     // this.createObstacles(); // Introduce bombs at level 4
      // this.updateObstacles();
     }
     if (this.level >= 5) {
@@ -197,7 +196,20 @@ class PlayScene extends Phaser.Scene {
     }
   }
 
- /* updateBombs() {
+
+  updateBomb(){
+    this.bomb.angle += 2;
+    this.moveBomb(this.bomb, this.bombSpeed);
+  }
+
+  moveBomb(bomb, speed){
+    bomb.y += speed;
+    if (bomb.y > this.sys.game.config.height){
+      this.resetBombPos(bomb);
+    }
+  }
+
+  /*updateBombs() {
     this.bombs.children.iterate((bomb) => {
       bomb.y += this.bombSpeed;
       if (bomb.y > this.sys.game.config.height) {
@@ -216,7 +228,7 @@ class PlayScene extends Phaser.Scene {
   updateObstacles() {
     this.bomb.angle += 2;
     this.moveObstacles(this.bomb, this.bombSpeed);
-  /*  this.bombs.forEach(bomb => {
+    /*this.bombs.forEach(bomb => {
       if (bomb.y > this.sys.game.config.height) {
         // Reset bomb position to top with a new random x position
         bomb.y = -50;
@@ -263,7 +275,7 @@ class PlayScene extends Phaser.Scene {
     bomb.setTexture("bomb");
     bomb.y = 0;
     bomb.x = Phaser.Math.Between(0, this.sys.game.config.width);
-    bomb.setVisible(false);
+    //bomb.setVisible(false);
   }
 
   killBamboo(pointer, gameObject) {
