@@ -96,7 +96,7 @@ class PlayScene extends Phaser.Scene {
             this.bomb.setTexture("smoke");
             this.bomb.isCut = true; 
             this.decreaseScore(); // Decrease score by 10 points
-            let explosion = this.sound.add("explosion", {volume: 0.1});
+            let explosion = this.sound.add("explosion", {volume: 0.02});
             explosion.play();
           }
     });
