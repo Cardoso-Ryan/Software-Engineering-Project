@@ -21,7 +21,8 @@ class PlayScene extends Phaser.Scene {
     this.createScoreboard();
     this.displayLevel();
     this.createObstacles();
-    const Music = this.sound.add("Music", {volume: 0.3});
+    this.sound.pauseOnBlur = false;
+    const Music = this.sound.add("Music", {volume: 0.02});
     Music.play();
   }
 
@@ -79,7 +80,7 @@ class PlayScene extends Phaser.Scene {
             this.bamboo.setTexture("bambooCut");
             this.bamboo.isCut = true; 
             this.updateScore();
-            let cutAudio = this.sound.add("cutAudio", {volume: 0.2});
+            let cutAudio = this.sound.add("cutAudio", {volume: 0.01});
             cutAudio.play();
           }
     });
