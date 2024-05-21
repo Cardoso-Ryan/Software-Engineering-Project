@@ -22,7 +22,8 @@ class PlayScene extends Phaser.Scene {
     this.createScoreboard();
     this.displayLevel();
     this.createObstacles();
-    const Music = this.sound.add("Music", {volume: 0.3});
+    this.sound.pauseOnBlur = false;
+    const Music = this.sound.add("Music", {volume: 0.02});
     Music.play();
 
   //  const fx = this.bamboo.postFX.addGlow(0xffffff, 2, 0, false, 0.1, 32);
@@ -97,7 +98,7 @@ class PlayScene extends Phaser.Scene {
             this.bamboo.setTexture("bambooCut");
             this.bamboo.isCut = true; // Set the bamboo as cut
             this.updateScore();
-            let cutAudio = this.sound.add("cutAudio", {volume: 0.2});
+            let cutAudio = this.sound.add("cutAudio", {volume: 0.01});
             cutAudio.play();
           }
     });
@@ -126,7 +127,7 @@ class PlayScene extends Phaser.Scene {
         if (!this.bomb.isCut) { // Check if the bomb has been cut
             this.bomb.setTexture("smoke");
             this.bomb.isCut = true; // Set the bomb as cut
-            let explosion = this.sound.add("explosion", {volume: 0.1});
+            let explosion = this.sound.add("explosion", {volume: 0.005});
             explosion.play();
           }
     });
