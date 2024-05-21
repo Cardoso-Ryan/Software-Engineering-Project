@@ -104,6 +104,8 @@ class PlayScene extends Phaser.Scene {
         if (!this.bomb.isCut) { // Check if the bomb has been cut
             this.bomb.setTexture("smoke");
             this.bomb.isCut = true; // Set the bomb as cut
+            let explosion = this.sound.add("explosion", {volume: 0.1});
+            explosion.play();
           }
     });
   }
