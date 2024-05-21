@@ -14,6 +14,8 @@ class PlayScene extends Phaser.Scene {
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
+    this.Pause();
+    this.Resume();
     this.createBamboo();
     //this.createBombs();
     this.createNameInput();
@@ -53,6 +55,26 @@ class PlayScene extends Phaser.Scene {
     //this.updateObstacles();
     //this.updateLevel();
   }
+
+  Pause(){
+    this.pause = this.add.image(900, 30, 'pauseBtn').setOrigin(0,0).setScale(0.2);
+   /* pauseBtn.on('onClick', function(){
+      sendToBack('PlayScene');
+      pause('PlayScene');
+      launch('pause');
+  });*/
+}
+
+  Resume(){
+  this.resume = this.add.image('resumeBtn').setScale(0.2);
+   /* resumeBtn.on('pointerdown', function(){
+    if(gameIsPaused === true){
+        gameIsPaused = false;
+        pauseBtn.setVisible(true);
+        pauseBtn.setActive(true);
+    }
+  });*/
+}
 
   createBackground() {
     this.background = this.add.image(0, 0, "background").setOrigin(0, 0).setScale(1.8);
@@ -139,18 +161,18 @@ class PlayScene extends Phaser.Scene {
   
 
   addGameText() {
-    const style = { font: "25px Kanit", fill: "white" };
+    const style = { font: "40px Kanit", fill: "white" };
     this.gameText = this.add.text(20, 20, "", style);
     this.gameText.setText('Playing as: ' + (this.playerName || ''));
   }
 
   createScoreboard() {
-    this.scoreText = this.add.text(16, 16, 'Score: 0', { font: '25px Kanit', fill: 'white' });
+    this.scoreText = this.add.text(480, 16, 'Score', { font: '50px Kanit', fill: 'white' });
   }
 
   updateScore() {
     this.score += 1; // Increase score
-    this.scoreText.setText('Score: ' + this.score); // Update score text
+    this.scoreText.setText(this.score); // Update score text
   
     // Check if the score is a multiple of 20 to increase the level
     if (this.score % 5 === 0) {
@@ -159,7 +181,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   displayLevel() {
-    this.levelText = this.add.text(880, 20, 'Level: 1', { font: '25px Kanit', fill: 'white' });
+    this.levelText = this.add.text(20, 16, 'Level: 1', { font: '32px Kanit', fill: 'white' });
   }
 
   updateLevel() {
