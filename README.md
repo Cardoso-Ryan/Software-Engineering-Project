@@ -8,7 +8,7 @@ Quiz Samurai is a fun and interactive game where players use a virtual samurai s
 Slicing Mechanism: Players can slice bamboos by swiping their mouse cursor across the screen.
 Multiple bamboos: Different types of bamboos will appear, each with its own points value (Stand-By).
 Bomb Avoidance: Bombs will occasionally appear among the bamboos; slicing a bomb will result in a game over.
-Time Challenge: Players have a limited amount of time to slice as many bamboos as possible, before having to answer a question.
+Time Challenge: Players have a limited amount of time to slice as many bamboos as possible, before having to answer a question. (Up-coming)
 
 ## Technologies Used
 Frontend: HTML5, CSS3, JavaScript
