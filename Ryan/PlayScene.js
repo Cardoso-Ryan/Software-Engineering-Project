@@ -14,10 +14,10 @@ class PlayScene extends Phaser.Scene {
     this.setupDifficulty();
     this.createBackground();
     this.createCursor();
-    this.Pause();
+    //this.Pause();
     this.Resume();
     this.createBamboo();
-    this.createNameInput();
+    //this.createNameInput();
     this.createScoreboard();
     this.displayLevel();
     this.createObstacles();
@@ -53,7 +53,7 @@ class PlayScene extends Phaser.Scene {
   }
 
   Pause(){
-    this.pause = this.add.image(900, 30, 'pauseBtn').setOrigin(0,0).setScale(0.2);
+  this.pause = this.add.image(900, 30, 'pauseBtn').setOrigin(0,0).setScale(0.2);
 }
 
   Resume(){
@@ -96,7 +96,7 @@ class PlayScene extends Phaser.Scene {
             this.bomb.setTexture("smoke");
             this.bomb.isCut = true; 
             this.decreaseScore(); // Decrease score by 10 points
-            let explosion = this.sound.add("explosion", {volume: 0.1});
+            let explosion = this.sound.add("explosion", {volume: 0.02});
             explosion.play();
           }
     });
@@ -169,12 +169,15 @@ class PlayScene extends Phaser.Scene {
       this.bambooSpeed += 1; 
     }
     if (this.level >= 4) {
+    
     }
     if (this.level >= 5) {
-      this.manageMultipleBamboos();
+      
+      window.location.href = 'quiz.html'; // Redirect to quiz.html
     }
     this.bamboo.setScale(this.bambooScale); 
     this.levelText.setText('Level: ' + this.level);
+
   }
 
   updateCursor() {
@@ -261,7 +264,7 @@ class PlayScene extends Phaser.Scene {
         gameObject.setTexture("smoke");
         gameObject.disableInteractive();
         this.decreaseScore(); // Decrease score by 10 points
-        let explosion = this.sound.add("explosion", {volume: 0.1});
+        let explosion = this.sound.add("explosion", {volume: 0.02});
         explosion.play();
       }
   }
