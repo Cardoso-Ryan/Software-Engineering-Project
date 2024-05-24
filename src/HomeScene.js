@@ -4,28 +4,18 @@ class HomeScene extends Phaser.Scene {
     }
 
     preload(){
+        // load assets of the background and the bamboos into the game
         this.load.image("background", "assets/images/background_trees.jpg");
-
-        // Chargement de la vie des joueur en haut a droite
-        this.load.image("x", "assets/images/x.png");
-        this.load.image("xf", "assets/images/xf.png");
-        this.load.image("xx", "assets/images/xx.png");
-        this.load.image("xxf", "assets/images/xxf.png");
-        this.load.image("xxx", "assets/images/xxx.png");
-        this.load.image("xxxf", "assets/images/xxxf.png");
-
-        //Chargement de la banane (a changer pour du bamboo)
         this.load.image("bamboo", "assets/images/bamboo.png");
-
-        this.load.image("bamboo1", "assets/images/bamboo-1.png");
-        
-        this.load.spritesheet("smoke", "assets/smoke/smokes.png",{
-            frameWidth: 64,
-            frameHeight: 64
-        } )
-
-           //Chargement de la bombe
+        this.load.image("bambooCut", "assets/images/bambooCut.png");
+        this.load.image("smoke", "assets/images/smoke.png");
         this.load.image("bomb", "assets/images/bomb.png");
+        this.load.audio("Music", [ "assets/audio/Entering_dojo.ogg", "assets/audio/Entering_dojo.mp3"]);
+        this.load.audio("cutAudio", [ "assets/audio/sound_effect.ogg", "assets/audio/sound_effect.mp3"]);
+        this.load.audio("explosion", [ "assets/audio/explosion.ogg", "assets/audio/explosion.mp3"]);
+        this.load.image("pauseBtn", "assets/images/pauseBtn.png");
+        this.load.image("resumeBtn", "assets/images/resumeBtn.png");
+
     }
 
     create(){
@@ -33,3 +23,33 @@ class HomeScene extends Phaser.Scene {
         this.scene.start("playGame");
     }
 }
+/*
+PlayScene.create = function(){
+    gameIsPaused = false;
+    
+    pauseBtn = this.add.sprite(600, 25, 'pauseBtn').setOrigin(0)
+    pauseBtn.setInteractive()
+
+    resumeBtn.on('pointerdown', function(){
+        if(gameIsPaused === true){
+            gameIsPaused = false;
+            pauseBtn.setVisible(true);
+            pauseBtn.setActive(true);
+            list.forEach(l => {
+                l.setVisible(false);
+                l.setActive(false);
+            });
+        }
+    });
+
+    pauseBtn.on('pointerdown', function(){
+        PlayScene.sendToBack('PlayScene')
+        PlayScene.pause('PlayScene')
+        PlayScene.launch('pause')
+})
+};
+
+PlayScene.update = function(){
+
+};
+*/
