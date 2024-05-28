@@ -1,14 +1,14 @@
 # Quiz Samurai
-Welcome to Quiz Samurai! This is a web-based game project developed for our Software Engineering course at University of Luxembourg. In this project, we've created a game inspired by the popular Fruit Ninja, but with our own unique twist.
+Welcome to Quiz Samurai! This is a web-based game project developed for our Software Engineering course at the University of Luxembourg. In this project, we've created a game inspired by the popular Fruit Ninja, but with our own unique twist.
 
 ## Introduction
-Quiz Samurai is a fun and interactive game where players use a virtual samurai sword to slice various bamboos that are thrown onto the screen. The objective is simple: slice as many bamboos as possible while avoiding slicing any bombs that may also appear.
+Quiz Samurai is a fun and interactive game where players use a virtual samurai sword to slice various bamboos that fall from the top of the screen. 
+The objective is simple: slice as many bamboos as possible while avoiding slicing any bombs that may also appear.
 
 ## Features
 * Slicing Mechanism: Players can slice bamboos by swiping their mouse cursor across the screen.
-* Multiple bamboos: Different types of bamboos will appear.
-* Bomb Avoidance: Bombs will occasionally appear among the bamboos; slicing a bomb will result in a lost of points.
-* Time Challenge: Players have a limited amount of time to slice as many bamboos as possible, before having to answer a question. (Up-coming)
+* Multiple bamboos: Bamboos will keep falling down for the entirety of the game, while they also speed up with each increment of the level
+* Bomb Avoidance: Bombs will occasionally appear among the bamboos; slicing a bomb will result in a loss of points.
 
 ## Technologies Used
 * Frontend: HTML5, CSS3, JavaScript
@@ -35,7 +35,7 @@ To play the game locally, follow these steps:
 * Choose a category and answer the questions.
 
 ## Configuration
-The game is built using the Phaser 3 framework. The configuration is set in game.js. In HomeScene.js all the images and sounds are preloaded in advance for the Playscene.js there is the full game logic. Everthing that happens in the game come from there.
+The game is built using the Phaser 3 framework. The configuration is set in the game.js file. In HomeScene.js file, all the images and sounds are preloaded in advance for the Playscene.js there is the full game logic.
 
 ## Scenes
 * HomeScene (HomeScene.js): Preloads assets and starts the PlayScene.
@@ -47,6 +47,6 @@ The game is built using the Phaser 3 framework. The configuration is set in game
 * Alejandro Balboni
 
 ## Acknowledgements
-We'd like to thank Volker Müller for their guidance and support throughout this project.
+We'd like to thank Volker Müller for his guidance and support throughout this project.
 
 Enjoy playing Quiz Samurai!
