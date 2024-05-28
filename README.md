@@ -49,4 +49,7 @@ The game is built using the Phaser 3 framework. The configuration is set in the 
 ## Acknowledgements
 We'd like to thank Volker Müller for his guidance and support throughout this project.
 
+## Promotional Video
+Link: https://www.youtube.com/watch?v=4UEa2G9PGMI
+
 Enjoy playing Quiz Samurai!
