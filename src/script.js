@@ -47,6 +47,32 @@ const categories = {
             correctAnswer: "a"
         },
 
+    ],
+    net: [
+        
+        {
+            question: "What does http stand for?",
+            answers: {
+                a: "Hypertext Transfer Process",
+                b: "Hypertext Transport Protocol",
+                c: "Hypertext Transfer Protocol"
+            },
+            correctAnswer: "c"
+        },
+
+    ],
+    os: [
+        
+        {
+            question: "Which one is <u>not</u> a valid OS?",
+            answers: {
+                a: "Ubuntu",
+                b: "Intel",
+                c: "MacOS"
+            },
+            correctAnswer: "b"
+        },
+
     ]
 };
 
