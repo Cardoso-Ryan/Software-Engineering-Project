@@ -30,6 +30,16 @@ const categories = {
             },
             correctAnswer: "b"
         },
+
+        {
+            question: "What is the purpose of the script tag in HTML?",
+            answers: {
+                a: "To include CSS styles",
+                b: "To include JavaScript code",
+                c: "To create hyperlinks"
+            },
+            correctAnswer: "b"
+        },
         
     ],
     prog: [
@@ -43,7 +53,26 @@ const categories = {
             },
             correctAnswer: "c"
         },
-        
+
+        {
+            question: "What is the correct syntax to output <q>Hello World</q> in <u>Python</u>?",
+            answers: {
+                a: "Print(<q>Hello World</q>)",
+                b: "console.log(<q>Hello World</q>)",
+                c: " printf(<q>Hello World</q>);",
+            },
+            correctAnswer: "a"
+        },
+
+        {
+            question: "How do you comment in C?",
+            answers: {
+                a: "*/ Insert comment /*",
+                b: "# Insert comment",
+                c: "// Insert comment",
+            },
+            correctAnswer: "c"
+        },
     ],
     math: [
         
@@ -55,6 +84,26 @@ const categories = {
                 c: "16"
             },
             correctAnswer: "a"
+        },
+
+        {
+            question: "What is the result of 2^10?",
+            answers: {
+                a: "1024",
+                b: "256",
+                c: "1000"
+            },
+            correctAnswer: "a"
+        },
+
+        {
+            question: "What is the first prime number?",
+            answers: {
+                a: "1",
+                b: "0",
+                c: "2"
+            },
+            correctAnswer: "c"
         },
 
     ],
@@ -70,6 +119,26 @@ const categories = {
             correctAnswer: "c"
         },
 
+        {
+            question: "What does TCP stand for?",
+            answers: {
+                a: "Transmission Control Protocol",
+                b: "Technological Control Protocol",
+                c: "Transmission Connection Protocol"
+            },
+            correctAnswer: "a"
+        },
+
+        {
+            question: "Which of the following devices forwards data packets between networks?",
+            answers: {
+                a: "Firewall",
+                b: "Router",
+                c: "Bluetooth"
+            },
+            correctAnswer: "b"
+        },
+
     ],
     os: [
         
@@ -81,6 +150,26 @@ const categories = {
                 c: "MacOS"
             },
             correctAnswer: "b"
+        },
+
+        {
+            question: "Which is <u>not</u> a characteristic element of a semaphore?",
+            answers: {
+                a: "resource counter",
+                b: "secure access",
+                c: "waiting queue"
+            },
+            correctAnswer: "b"
+        },
+
+        {
+            question: "Which is the drawback of choosing a really large page in virtual memory?",
+            answers: {
+                a: "external fragmentation",
+                b: "bad performance",
+                c: "internal fragmentation"
+            },
+            correctAnswer: "c"
         },
 
     ]
