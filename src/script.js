@@ -20,6 +20,16 @@ const categories = {
             },
             correctAnswer: "a"
         },
+
+        {
+            question: "What does CSS stand for?",
+            answers: {
+                a: "Connecting Style Sheets",
+                b: "Cascading Style Sheets",
+                c: "Cascading Style Steps"
+            },
+            correctAnswer: "b"
+        },
         
     ],
     prog: [
@@ -79,7 +89,8 @@ const categories = {
 // Function to load a category of questions
 function loadCategory(category) {
     if (categories.hasOwnProperty(category)) {
-        myQuestions = categories[category];
+        // Clone and shuffle questions
+        myQuestions = shuffleArray([...categories[category]]);
         buildQuiz();
         categoryMenu.style.display = 'none';
         quizContainerElement.style.display = 'block';
@@ -101,21 +112,21 @@ function buildQuiz() {
 
 function showQuestion(index) {
     const question = myQuestions[index];
-    const answers = [];
-    for (const letter in question.answers) {
-        answers.push(
-            `<div class="answer">
-                <label>
-                    <input type="radio" name="question" value="${letter}">
-                    ${letter} :
-                    ${question.answers[letter]}
-                </label>
-            </div>`
-        );
-    }
+    const answers = shuffleArray(Object.entries(question.answers));
+    
+    const answersHTML = answers.map(([letter, answer]) => `
+    <div class="answer">
+        <label>
+            <input type="radio" name="question" value="${letter}">
+            ${letter} :
+            ${answer}
+        </label>
+    </div>
+`).join('');
+
     quizContainer.innerHTML = `
         <div class="question"> ${question.question} </div>
-        <div class="answers"> ${answers.join('')} </div>
+        <div class="answers"> ${answersHTML} </div>
     `;
 }
 
@@ -169,6 +180,8 @@ function showResults() {
             incorrectAnswers = [];
             // Hide the results and show the first question again
             resultsContainer.innerHTML = '';
+            // Shuffle questions again
+            myQuestions = shuffleArray([...myQuestions]);
             showQuestion(currentQuestionIndex);
             submitButton.style.display = 'inline-block';
         });
@@ -176,6 +189,15 @@ function showResults() {
 
     // Hide the submit button after displaying results
     submitButton.style.display = 'none';
+}
+
+// Function to shuffle the questions
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
 }
 
 // Initial setup for category buttons
